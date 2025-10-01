@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sklad 3D</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Sklad 3D">
+    <meta name="description" content="Digital warehouse space.">
+    <meta name="keywords" content="sklad, warehouse, digital">
+    <meta name="author" content="Sklad 3D">
+    <meta property="og:type" content="Portfolio" />
+    <meta property="og:url" content="https://sklad3d.digital" />
+    <meta property="og:image" content="sklad/skladheader.jpg"/>
+    <meta property="og:site_name" content="Sklad 3D" />
+    <meta property="og:description" content="Digital warehouse space." />
+    <meta name="google-site-verification" content="3Y32aF40adwlmd9_p3rlPuT_MumdyOy5aeKVQk1yIJs" />
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#222222">
+    <meta name="apple-mobile-web-app-title" content="Margarita Krupenich">
+    <meta name="application-name" content="Margarita Krupenich">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Thumbnail -->
+
+    <!-- CSS Framework 
+
+    <link rel="stylesheet" href="css/danielrandus.css" />
+    <link rel="stylesheet" media="(max-width: 800px)" href="css/max-800px.css">-->
+    <link rel="stylesheet" href="css/kube.min.css" />
+
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Lottie -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-interactivity@latest/dist/lottie-interactivity.min.js"></script>
+    
+    <!-- Spline -->
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.66/build/spline-viewer.js"></script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
+    
+    
+
+
+   <style>
+
+        html,
+        body {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: hidden; /* Initially hide vertical scroll */
+        }
+
+        body {
+            background: rgb(23, 27, 30);
+            font-family: Manrope, sans-serif;
+            font-size: 14px;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Scroll states */
+        .scroll-state-1 { overflow-y: auto; }
+        .scroll-state-2 { overflow-y: hidden; }
+        .scroll-state-3 { overflow-y: hidden; }
+        .scroll-state-4 { overflow-y: auto; }
+       
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            background-color: rgb(23, 27, 30);
+            display: block;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+        body{
+            background-color: rgb(23, 27, 30);
+        }
+
+
+
+        h3, h2, p{
+            color:white;
+            font-family: Manrope,sans-serif;
+            margin: 0;
+        }
+
+        .slides{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+       
+       .middle-slides{
+           position: relative;
+           margin: 0 auto 0 auto;
+           width: 100%;
+           height: 100%;
+           scroll-snap-type: x mandatory;
+           height: 100vh;
+           transition: all 0.8s ease;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+       }
+
+       /* State transitions for middle-slides */
+       .state-1 .middle-slides {
+           margin-bottom: 10vh;
+       }
+
+       .state-2 .middle-slides,
+       .state-3 .middle-slides,
+       .state-4 .middle-slides {
+           width: 100%;
+           height: calc(100vh - 40%); /* Leave space for logo at top */
+           padding: 0;
+       }
+
+       .slide-date{
+           width: 9rem;
+           height: 2rem;
+           z-index: 2;
+           border: 1px solid white;
+           border-radius: 3rem;
+           padding-left: 1.2rem;
+           padding-right: 1.5rem;
+           padding-bottom: 2rem;
+           float: right;
+       }
+
+       .name-middle{
+           height: 4rem;
+           z-index: 2;
+           vertical-align: middle;
+           color:white;
+           margin: auto;
+           text-align: center;
+           filter: drop-shadow(0 0 10px rgba(0, 0, 255, 0.7)) drop-shadow(0 0 20px rgba(0, 0, 255, 0.4));
+       }
+
+
+
+       .middle-description{
+           position: relative;
+           max-width: 500px;
+           /* pointer-events: none; */
+           margin: 55px auto 0 auto;
+           height: 57vh;
+           width: 100%;
+           overflow-y: scroll;
+           -ms-overflow-style: none; /* IE and Edge */
+           scrollbar-width: none; /* Firefox */
+       }
+
+
+       .middle-description::-webkit-scrollbar {
+           display: none; /* Safari and Chrome */
+       }
+
+       .logo{
+           transition: all 0.8s ease;
+           z-index: 10;
+       }
+
+       .logo img{
+            max-width: 100%;
+            height: auto;
+       }
+
+       /* Logo state transitions */
+       .state-1 .logo {
+           position: absolute;
+           top: 50%;
+           left: 50%;
+           transform: translate(-50%, -50%);
+       }
+
+       .state-2 .logo,
+       .state-3 .logo,
+       .state-4 .logo {
+           position: fixed;
+           top: 0;
+           left: 0;
+           transform: translateX(0%);
+           width: 150px;
+           height: 80px;
+           z-index: 100;
+       }
+
+
+       .content{
+           position:absolute;
+           width:100%;
+       }
+
+       .slide-date{
+           opacity:1;
+       }
+
+       .content h3{
+           opacity:0;
+       }
+       .content p{
+           opacity:0;
+       }
+       /*
+       .swiper-pagination{
+       position:relative;
+       margin-top:20px;
+       }
+       */
+       .swiper-pagination {
+           position: fixed;
+           bottom: 200px; /* Above the bottom content */
+           left: 50%;
+           transform: translateX(-50%);
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           overflow-x: auto;
+           white-space: nowrap;
+           width: 80%;
+           scrollbar-width: none;
+           padding: 0 10%;
+           opacity: 0;
+           transition: all 0.8s ease;
+           z-index: 10;
+       }
+
+       /* Show pagination in states 2 and 3 */
+       .state-2 .swiper-pagination,
+       .state-3 .swiper-pagination {
+           opacity: 1;
+       }
+
+       /* Hide pagination in state 4 */
+       .state-4 .swiper-pagination {
+           opacity: 0;
+       }
+
+       /* Override default Swiper pagination positioning */
+       .swiper-horizontal>.swiper-pagination-bullets,
+       .swiper-pagination-bullets.swiper-pagination-horizontal,
+       .swiper-pagination-custom,
+       .swiper-pagination-fraction {
+           bottom: auto !important;
+           top: 65% !important;
+           left: 50% !important;
+           width: auto !important;
+       }
+       
+       .swiper-pagination::-webkit-scrollbar {
+           display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+       }
+
+       .swiper-wrapper{
+           height: 100% !important;
+       }
+
+       .swiper-container{
+           height: 100% !important;
+       }
+
+       .swiper-slide{
+           background: rgb(23, 27, 30);
+       }
+
+       .swiper-pagination-bullet {
+           width: 30px; /* Adjust the size of the bullets */
+           height: 40px;
+           background-size: cover;
+           background-position: center;
+           border: 2px solid #ffffff00;
+           border-radius: 0;
+           margin: 0 5px;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           flex-shrink: 0; /* Prevent bullets from shrinking */
+       }
+
+       .swiper-pagination-bullet-active {
+           border: 2px solid red;
+       }
+       
+       /* Main content areas */
+       .main-content {
+           position: relative;
+           width: 100%;
+           height: 100vh;
+           display: flex;
+           flex-direction: column;
+       }
+
+       .middle-intro-content {
+           position: fixed;
+           bottom: 50%;
+           left: 50%;
+           transform: translateX(-50%);
+           color: black;
+           padding: 30px;
+           width: 60%;
+           max-width: 600px;
+           height: 150px;
+           transition: all 0.8s ease;
+           z-index: 5;
+           border-radius: 10px 10px 0 0;
+           box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+       }
+
+       .state-1 .middle-intro-content {
+           opacity: 1;
+       }
+
+       .state-2 .middle-intro-content,
+       .state-3 .middle-intro-content,
+       .state-4 .middle-intro-content {
+           opacity: 0;
+       }
+
+       /* Content switching in bottom area */
+       .content-state-1, .content-state-2 {
+           transition: opacity 0.8s ease;
+       }
+
+       .state-1 .content-state-1 { opacity: 1; }
+       .state-1 .content-state-2 { opacity: 0; display: none; }
+
+       .state-2 .content-state-1 { opacity: 0; display: none; }
+       .state-2 .content-state-2 { opacity: 1; }
+
+       .state-3 .content-state-1 { opacity: 0; display: none; }
+       .state-3 .content-state-2 { opacity: 1; }
+
+       .state-4 .middle-intro-content { opacity: 0; }
+
+       .left-text {
+            position: fixed;
+           left: 50%;
+            top: 62%;
+            transform: translate(-50%, -50%);
+           color: white;
+           font-size: 24px;
+           font-weight: 600;
+           z-index: 10;
+           transition: all 0.8s ease;
+       }
+
+       /* State-specific text content */
+       .state-1 .left-text::after { content: "Sklad"; }
+       .state-2 .left-text::after { content: "Kdo je ve skladu"; }
+       .state-3 .left-text::after { content: ""; }
+       .state-4 .left-text::after { content: ""; }
+
+       /* Three-row text layout for state 3 */
+       .three-row-text {
+           position: fixed;
+           left: 20px;
+           top: 30%;
+           color: white;
+           z-index: 10;
+           opacity: 0;
+           transition: all 0.8s ease;
+       }
+
+       .state-3 .three-row-text {
+           opacity: 1;
+       }
+
+       .three-row-text .row {
+           margin-bottom: 20px;
+           font-size: 18px;
+       }
+
+       .three-row-text .row:first-child { font-weight: 600; }
+       .three-row-text .row:nth-child(2) { font-weight: 400; }
+       .three-row-text .row:last-child { font-weight: 300; }
+
+       /* Kontakt button */
+       .kontakt-btn {
+           position: fixed;
+           bottom: 20px;
+           left: 20px;
+           background: white;
+           color: black;
+           border: none;
+           border-radius: 25px;
+           cursor: pointer;
+           font-family: Manrope, sans-serif;
+           font-weight: 600;
+           z-index: 1000;
+           transition: all 0.3s ease;
+           box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+       }
+
+       .kontakt-btn:hover {
+           background: #f0f0f0;
+           transform: translateY(-2px);
+           box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+       }
+
+       /* Layout for state 3 - 1 vertical middle textbox + 2 rectangles on right */
+       .state-3-layout {
+           position: fixed;
+           top: 85%;
+           left: 50%;
+           transform: translate(-50%, -100%);
+           width: 80%;
+           height: 15%;
+           display: grid;
+           grid-template-columns: 1fr 300px;
+           gap: 40px;
+           opacity: 0;
+           transition: all 0.8s ease;
+           z-index: 15;
+       }
+
+       .state-3 .state-3-layout {
+           opacity: 1;
+       }
+
+       .middle-textbox {
+           background: rgba(255, 255, 255, 0.1);
+           border: 1px solid rgba(255, 255, 255, 0.3);
+           border-radius: 10px;
+           padding: 30px;
+           color: white;
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+       }
+
+       .middle-textbox h3 {
+           margin: 0 0 10px 0;
+           font-size: 24px;
+           font-weight: 600;
+           color: #ffffff;
+       }
+
+       .middle-textbox h4 {
+           margin: 0 0 20px 0;
+           font-size: 18px;
+           font-weight: 400;
+           color: rgba(255, 255, 255, 0.8);
+       }
+
+       .middle-textbox p {
+           margin: 0;
+           line-height: 1.6;
+           color: rgba(255, 255, 255, 0.9);
+       }
+
+       .right-rectangles {
+           display: flex;
+           flex-direction: column;
+           gap: 20px;
+       }
+
+       .rectangle {
+           width: 100%;
+           height: calc(50% - 10px);
+           background: rgba(255, 255, 255, 0.1);
+           border: 1px solid rgba(255, 255, 255, 0.3);
+           border-radius: 10px;
+       }
+
+       /* Hide the old layout rectangles in state 3 */
+       .layout-rectangles {
+           opacity: 0;
+           position: fixed;
+       }
+
+       /* Text columns for state 4 */
+       .text-columns {
+           position: fixed;
+           top: 90%;
+            left: 50%;
+            transform: translate(-50%, -100%);
+           width: 90%;
+           max-width: 1200px;
+           display: grid;
+           grid-template-columns: repeat(3, 1fr);
+           gap: 40px;
+           opacity: 0;
+           transition: all 0.8s ease;
+           color: white;
+           z-index: 20;
+       }
+
+       .state-4 .text-columns {
+           opacity: 1;
+       }
+
+       /* Hide other elements in state 4 */
+       .state-4 .state-3-layout {
+           opacity: 0;
+       }
+
+       .state-4 .three-row-text {
+           opacity: 0;
+       }
+
+       .state-4 .middle-slides {
+           opacity: 0.3;
+       }
+
+       .text-column {
+           padding: 30px;
+           background: rgba(255, 255, 255, 0.08);
+           border: 1px solid rgba(255, 255, 255, 0.2);
+           border-radius: 15px;
+           min-height: 300px;
+       }
+
+       .text-column h3 {
+           margin-bottom: 20px;
+           font-weight: 600;
+           font-size: 24px;
+           color: #ffffff;
+       }
+
+       .text-column p {
+           line-height: 1.6;
+           color: rgba(255, 255, 255, 0.8);
+       }
+
+       /* Smooth transitions for all elements */
+       .main-content, .logo, .middle-slides, .middle-intro-content,
+       .left-text, .three-row-text, .state-3-layout, .text-columns,
+       .swiper-pagination {
+           transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+       }
+
+       /* Swiper slide transitions */
+       .swiper-slide {
+           opacity: 0.7;
+           transform: scale(0.95);
+           transition: all 0.5s ease;
+       }
+
+       .swiper-slide-active {
+           opacity: 1;
+           transform: scale(1);
+       }
+
+       /* Pagination bullet hover effects */
+       .swiper-pagination-bullet:hover {
+           transform: scale(1.1);
+           border-color: rgba(255, 255, 255, 0.5);
+       }
+
+       /* State transition animations */
+       .state-1 .middle-slides {
+           animation: slideToCenter 0.8s ease;
+       }
+
+       .state-2 .middle-slides,
+       .state-3 .middle-slides {
+           animation: slideToTop 0.8s ease;
+       }
+
+       @keyframes slideToCenter {
+           from {
+               transform: translateY(-20px);
+               opacity: 0;
+           }
+           to {
+               transform: translateY(0);
+               opacity: 1;
+           }
+       }
+
+       @keyframes slideToTop {
+           from {
+               transform: translateY(20px);
+           }
+           to {
+               transform: translateY(0);
+           }
+       }
+
+       /* Debug indicator */
+       .debug-indicator {
+           position: fixed;
+           top: 10px;
+           right: 10px;
+           background: rgba(0, 0, 0, 0.8);
+           color: white;
+           padding: 10px;
+           border-radius: 5px;
+           font-family: monospace;
+           z-index: 1000;
+           font-size: 12px;
+           opacity:0;
+       }
+
+       /* Responsive design */
+       @media (max-width: 768px) {
+           .text-columns {
+               grid-template-columns: 1fr;
+               gap: 20px;
+               width: 90%;
+           }
+
+           .three-row-text {
+               left: 10px;
+           }
+
+           .layout-rectangles {
+               right: 10px;
+           }
+
+           .rectangle {
+               width: 150px;
+               height: 80px;
+           }
+
+           .logo img {
+               max-height: 150px;
+           }
+
+           .state-2 .logo,
+           .state-3 .logo,
+           .state-4 .logo {
+               height: 60px;
+               scale: 50%;
+           }
+       }
+
+
+
+       #container3D{
+           width:100vw !important;
+           height:100vh !important;
+           position: absolute;
+           top:0;
+       }
+
+       .head{
+            width:100vw;
+       }
+       
+    </style>
+    
+</head>
+
+<body class="state-1">
+    <div class="main-content">
+        <!-- Logo -->
+        <div class="logo">
+            <img src="sklad/Sklad Logo transparent.png" alt="Sklad 3D Logo">
+        </div>
+
+        <!-- Left text that changes based on state -->
+        <div class="left-text"></div>
+
+        <!-- Three-row text for state 3 -->
+        <div class="three-row-text">
+            <div class="row">Nicknames</div>
+            <div class="row">Name and Surname</div>
+            <div class="row">loremipsum.website</div>
+        </div>
+
+        <!-- Layout rectangles for state 3 -->
+        <div class="layout-rectangles">
+            <div class="rectangle"></div>
+            <div class="rectangle"></div>
+        </div>
+
+        <!-- State 3 layout: 1 vertical middle textbox + 2 rectangles on right -->
+        <div class="state-3-layout">
+            <div class="middle-textbox">
+                <!-- Content will be dynamically updated -->
+            </div>
+            <div class="right-rectangles">
+                <div class="rectangle"></div>
+                <div class="rectangle"></div>
+            </div>
+        </div>
+        <!-- Middle slides container -->
+        <div class="middle-slides">
+            <div class="slides">
+                <div class="swiper-container">
+                    <!-- Pictures -->
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide picture"><img src="sklad/skladheader.jpg" alt="1"></div>
+                        <div class="swiper-slide picture"><img src="sklad/skladheader.jpg" alt="2"></div>
+                        <div class="swiper-slide picture"><img src="sklad/skladheader.jpg" alt="3"></div>
+                        <div class="swiper-slide picture"><img src="sklad/skladheader.jpg" alt="4"></div>
+                        <div class="swiper-slide picture"><img src="sklad/skladheader.jpg" alt="5"></div>
+                        <div class="swiper-slide picture"><img src="sklad/skladheader.jpg" alt="6"></div>
+                        <div class="swiper-slide picture"><img src="sklad/skladheader.jpg" alt="7"></div>
+                        <div class="swiper-slide picture"><img src="sklad/skladheader.jpg" alt="8"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Swiper pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- Bottom content area -->
+        <div class="middle-intro-content">
+            <div class="content-state-1">
+                <h3>O prostoru</h3>
+                <p>Sklad je digitální prostor pro kreativní práci a experimentování. Místo, kde se setkávají umělci, designéři a technologové.</p>
+            </div>
+            <div class="content-state-2">
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        </div>
+
+        <!-- Text columns for state 4 -->
+        <div class="text-columns">
+            <div class="text-column">
+                <h3>O Skladu</h3>
+                <p>Sklad je inovativní digitální prostor určený pro kreativní práci, experimentování a spolupráci. Naše platforma spojuje umělce, designéry a technologické nadšence v jedinečném prostředí.</p>
+                <p>Poskytujeme nástroje a prostor pro realizaci kreativních projektů s využitím nejmodernějších technologií.</p>
+            </div>
+            <div class="text-column">
+                <h3>Kdo jsme</h3>
+                <p>Jsme tým kreativců a technologů, kteří věří v sílu digitální transformace umění a designu. Naše mise je vytvořit prostor, kde se tradice setkává s inovací.</p>
+                <p>Každý člen našeho týmu přináší unikátní perspektivu a odbornost do společných projektů.</p>
+            </div>
+            <div class="text-column">
+                <h3>Kontakt</h3>
+                <p>Máte zájem o spolupráci nebo chcete vědět více o našich projektech? Rádi se s vámi spojíme a probereme možnosti spolupráce.</p>
+                <p><strong>Email:</strong> info@sklad3d.digital<br>
+                <strong>Telefon:</strong> +420 123 456 789<br>
+                <strong>Adresa:</strong> Praha, Česká republika</p>
+            </div>
+        </div>
+
+        <!-- Kontakt button -->
+        <button class="kontakt-btn" onclick="scrollToFinal()">Kontakt</button>
+
+        <!-- Debug indicator -->
+        <div class="debug-indicator">
+            State: <span id="debug-state">1</span><br>
+            Slide: <span id="debug-slide">0</span><br>
+            Scroll Count: <span id="debug-scroll">0</span>
+        </div>
+    </div>
+
+     <!-- 3D 
+    <main>
+        <div id="container3D"></div>
+    </main>
+  3D 
+    
+ <script type="module" src="js/mweb.js"></script>-->
+    
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <script>
+            // Global variables
+            let currentState = 1;
+            let currentSlide = 0;
+            let swiper;
+            let scrollCount = 0;
+            let isScrollLocked = false;
+
+            // Content data for each slide
+            const slideContent = [
+                {
+                    nickname: "OXOO",
+                    name: "Lukáš Dřevjaný",
+                    content: "Audio-visual artist whose work raises from rave underground and resides at the cutting edge of contemporary digital art. Blending elements of abstract expressionism with a futurist sensibility, oxoo constructs immersive visual experiences that challenge the viewer’s perceptions of reality. Through use of deep, resonant colors —particularly reds, whites and blacks— oxoo explores the tension between chaos and order, technology and humanity, stretching the boundaries of traditional visual storytelling."
+                },
+                {
+                    nickname: "SMOLIKJA",
+                    name: "Jakub Smolík",
+                    content: "Mobile app developer, software engineer."
+                },
+                {
+                    nickname: "DONE",
+                    name: "Daniel Randus",
+                    content: "Motion designer, animator, visualiser and game-developer."
+                },
+                {
+                    nickname: "AMT",
+                    name: "Nikita Kutimskij",
+                    content: "3D Generalist."
+                },
+                {
+                    nickname: "MELOON",
+                    name: "Matěj Meloun",
+                    content: "Junior digital artist využívající prvky 3d a motion grafiky. Inspirován prací studii ManVsMachines, Signal Creative, Aixsponza."
+                },
+                {
+                    nickname: "avo0xid",
+                    name: "Daria",
+                    content: "3D character animator, ."
+                },
+                {
+                    nickname: "DAN",
+                    name: "Dan Holas",
+                    content: "Architekt, lumberjack."
+                },
+                {
+                    nickname: "THIS COULD BE YOU",
+                    name: "YOUR NAME",
+                    content: "YOUR DESCRIPTION."
+                }
+            ];
+
+            document.addEventListener('DOMContentLoaded', function() {
+                // Initialize Swiper
+                swiper = new Swiper('.swiper-container', {
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                        renderBullet: function (index, className) {
+                            const slides = document.querySelectorAll('.swiper-slide img');
+                            if (slides[index]) {
+                                const thumb = slides[index].src;
+                                return `<span class="${className}" style="background-image:url('${thumb}')"></span>`;
+                            }
+                            return `<span class="${className}"></span>`;
+                        },
+                    },
+                    allowTouchMove: false, // Disable touch/mouse drag
+                    speed: 600,
+                    on: {
+                        slideChange: function () {
+                            currentSlide = this.activeIndex;
+                            updatePaginationScroll();
+                            updateSlideContent();
+                            console.log('Slide changed to:', currentSlide);
+
+                            // Update debug indicator
+                            document.getElementById('debug-slide').textContent = currentSlide;
+                            document.getElementById('debug-scroll').textContent = scrollCount;
+                        }
+                    }
+                });
+
+                // Initial state setup
+                updateState(1);
+                updateSlideContent(); // Initialize with first slide content
+                setupScrollHandling();
+            });
+            // Function to update the current state
+            function updateState(newState) {
+                console.log('Updating state from', currentState, 'to', newState);
+                currentState = newState;
+                document.body.className = `state-${newState}`;
+
+                // Update debug indicator
+                document.getElementById('debug-state').textContent = newState;
+                document.getElementById('debug-slide').textContent = currentSlide;
+                document.getElementById('debug-scroll').textContent = scrollCount;
+
+                // Update scroll behavior based on state
+                if (newState === 1 || newState === 4) {
+                    document.body.style.overflowY = 'auto';
+                    isScrollLocked = false;
+                } else {
+                    document.body.style.overflowY = 'hidden';
+                    isScrollLocked = true;
+                }
+
+                // Reset slide position when going back to earlier states
+                if (newState === 2 || newState === 1) {
+                    swiper.slideTo(0, 600);
+                    currentSlide = 0;
+                    scrollCount = 0;
+                }
+            }
+
+            // Function to handle scroll events
+            function setupScrollHandling() {
+                let lastScrollTime = 0;
+                const scrollDelay = 300; // Minimum time between scroll actions
+
+                window.addEventListener('wheel', function(e) {
+                    const currentTime = Date.now();
+
+                    console.log('Scroll event:', { currentState, deltaY: e.deltaY, currentSlide });
+
+                    if (currentTime - lastScrollTime < scrollDelay) {
+                        e.preventDefault();
+                        return;
+                    }
+
+                    if (currentState === 1) {
+                        // First scroll transitions to state 2
+                        if (e.deltaY > 0) {
+                            e.preventDefault();
+                            updateState(2);
+                            lastScrollTime = currentTime;
+                        }
+                    } else if (currentState === 2) {
+                        // Second scroll transitions to state 3
+                        if (e.deltaY > 0) {
+                            e.preventDefault();
+                            updateState(3);
+                            lastScrollTime = currentTime;
+                        } else if (e.deltaY < 0) {
+                            e.preventDefault();
+                            updateState(1);
+                            lastScrollTime = currentTime;
+                        }
+                    } else if (currentState === 3) {
+                        // In state 3, scroll controls swiper slides
+                        e.preventDefault();
+
+                        if (e.deltaY > 0) {
+                            // Scroll down - next slide
+                            if (currentSlide < 7) {
+                                swiper.slideNext();
+                                scrollCount++;
+                                console.log('Moving to slide:', currentSlide + 1);
+                            } else {
+                                // After 8th slide (index 7), go to state 4
+                                console.log('Reached end, moving to state 4');
+                                updateState(4);
+                            }
+                        } else {
+                            // Scroll up - previous slide or back to state 2
+                            if (currentSlide > 0) {
+                                swiper.slidePrev();
+                                scrollCount--;
+                                console.log('Moving to slide:', currentSlide - 1);
+                            } else {
+                                console.log('At first slide, going back to state 2');
+                                updateState(2);
+                            }
+                        }
+                        lastScrollTime = currentTime;
+                    } else if (currentState === 4) {
+                        // In state 4, allow normal scrolling but can go back
+                        if (e.deltaY < 0 && window.scrollY === 0) {
+                            e.preventDefault();
+                            updateState(3);
+                            lastScrollTime = currentTime;
+                        }
+                    }
+                });
+            }
+
+            // Function to update pagination scroll position
+            function updatePaginationScroll() {
+                const pagination = document.querySelector('.swiper-pagination');
+                const bullets = document.querySelectorAll('.swiper-pagination .swiper-pagination-bullet');
+
+                if (bullets.length > 0 && bullets[currentSlide]) {
+                    const activeBullet = bullets[currentSlide];
+                    const scrollOffset = activeBullet.offsetLeft - (pagination.clientWidth / 2) + (activeBullet.clientWidth / 2);
+                    pagination.scrollTo({ left: scrollOffset, behavior: 'smooth' });
+                }
+            }
+
+            // Function to update slide content
+            function updateSlideContent() {
+                const content = slideContent[currentSlide];
+                if (content) {
+                    // Update three-row text
+                    const rows = document.querySelectorAll('.three-row-text .row');
+                    if (rows.length >= 3) {
+                        rows[0].textContent = content.nickname;
+                        rows[1].textContent = content.name;
+                        rows[2].textContent = "loremipsum.website";
+                    }
+
+                    // Update middle textbox content
+                    const middleTextbox = document.querySelector('.middle-textbox');
+                    if (middleTextbox) {
+                        middleTextbox.innerHTML = `
+                            <h3>${content.nickname}</h3>
+                            <h4>${content.name}</h4>
+                            <p>${content.content}</p>
+                        `;
+                    }
+                }
+            }
+
+            // Function to scroll to final state (called by Kontakt button)
+            function scrollToFinal() {
+                updateState(4);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        </script>
+
+</body>
+
+</html>
