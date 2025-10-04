@@ -12,7 +12,7 @@
     <meta name="author" content="Sklad 3D">
     <meta property="og:type" content="Portfolio" />
     <meta property="og:url" content="https://sklad3d.digital" />
-    <meta property="og:image" content="sklad/skladheader.jpg"/>
+    <meta property="og:image" content="img/skladheader.jpg"/>
     <meta property="og:site_name" content="Sklad 3D" />
     <meta property="og:description" content="Digital warehouse space." />
     <meta name="google-site-verification" content="3Y32aF40adwlmd9_p3rlPuT_MumdyOy5aeKVQk1yIJs" />
@@ -357,16 +357,21 @@
            transition: opacity 0.8s ease;
        }
 
-       .state-1 .content-state-1 { opacity: 1; }
-       .state-1 .content-state-2 { opacity: 0; display: none; }
+       .state-1 .content-state-1 { opacity: 1; pointer-events: auto; }
+       .state-1 .content-state-2 { opacity: 0; pointer-events: none; display: none; }
 
-       .state-2 .content-state-1 { opacity: 0; display: none; }
-       .state-2 .content-state-2 { opacity: 1; }
+       .state-2 .content-state-1 { opacity: 0; pointer-events: none; display: none; }
+       .state-2 .content-state-2 { opacity: 1; pointer-events: auto; }
 
-       .state-3 .content-state-1 { opacity: 0; display: none; }
-       .state-3 .content-state-2 { opacity: 1; }
+       .state-3 .content-state-1 { opacity: 0; pointer-events: none; display: none; }
+       .state-3 .content-state-2 { opacity: 1; pointer-events: auto; }
 
-       .state-4 .middle-intro-content { opacity: 0; }
+
+       .state-4 .middle-intro-content { opacity: 0; pointer-events: none;  }
+
+       .state-1 .text-columns { opacity: 0; pointer-events: none; }
+       .state-2 .text-columns { opacity: 0; pointer-events: none; }
+       .state-3 .text-columns { opacity: 0; pointer-events: none; }
 
        .left-text {
             position: fixed;
@@ -433,7 +438,7 @@
            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
        }
 
-       /* Layout for state 3 - 1 vertical middle textbox + 2 rectangles on right */
+       /* Layout for state 3 - picture on left, middle textbox, 1 rectangle on right */
        .state-3-layout {
            position: fixed;
            top: 85%;
@@ -442,7 +447,7 @@
            width: 80%;
            height: 15%;
            display: grid;
-           grid-template-columns: 1fr 300px;
+           grid-template-columns: 300px 1fr 300px;
            gap: 40px;
            opacity: 0;
            transition: all 0.8s ease;
@@ -484,18 +489,41 @@
            color: rgba(255, 255, 255, 0.9);
        }
 
-       .right-rectangles {
-           display: flex;
-           flex-direction: column;
-           gap: 20px;
-       }
-
-       .rectangle {
-           width: 100%;
-           height: calc(50% - 10px);
+       .left-picture {
            background: rgba(255, 255, 255, 0.1);
            border: 1px solid rgba(255, 255, 255, 0.3);
            border-radius: 10px;
+           padding: 20px;
+           color: white;
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           align-items: center;
+           position: relative;
+           overflow: hidden;
+       }
+
+       .left-picture h3 {
+           margin: 0 0 15px 0;
+           font-size: 18px;
+           font-weight: 600;
+           color: #ffffff;
+           text-align: center;
+       }
+
+       .left-picture img {
+           width: 100%;
+           height: 80%;
+           object-fit: cover;
+           border-radius: 5px;
+       }
+
+       .right-rectangle {
+           background: rgba(255, 255, 255, 0.1);
+           border: 1px solid rgba(255, 255, 255, 0.3);
+           border-radius: 10px;
+           width: 100%;
+           height: 100%;
        }
 
        /* Hide the old layout rectangles in state 3 */
@@ -522,16 +550,16 @@
        }
 
        .state-4 .text-columns {
-           opacity: 1;
+           opacity: 1; pointer-events: auto;
        }
 
        /* Hide other elements in state 4 */
        .state-4 .state-3-layout {
-           opacity: 0;
+           opacity: 0; pointer-events: none;
        }
 
        .state-4 .three-row-text {
-           opacity: 0;
+           opacity: 0; pointer-events: none;
        }
 
        .state-4 .middle-slides {
@@ -682,7 +710,7 @@
     <div class="main-content">
         <!-- Logo -->
         <div class="logo">
-            <img src="sklad/Sklad Logo transparent.png" alt="Sklad 3D Logo">
+            <img src="img/Sklad Logo transparent.png" alt="Sklad 3D Logo">
         </div>
 
         <!-- Left text that changes based on state -->
@@ -701,14 +729,18 @@
             <div class="rectangle"></div>
         </div>
 
-        <!-- State 3 layout: 1 vertical middle textbox + 2 rectangles on right -->
+        <!-- State 3 layout: picture on left, middle textbox, 1 rectangle on right -->
         <div class="state-3-layout">
+            <div class="left-picture">
+                <!-- <h3>Picture</h3> -->
+                <!-- Image will be dynamically updated -->
+                <img src="img/skladheader.jpg" alt="Current slide image">
+            </div>
             <div class="middle-textbox">
                 <!-- Content will be dynamically updated -->
             </div>
-            <div class="right-rectangles">
-                <div class="rectangle"></div>
-                <div class="rectangle"></div>
+            <div class="right-rectangle">
+                <!-- Right rectangle content -->
             </div>
         </div>
         <!-- Middle slides container -->
@@ -717,14 +749,14 @@
                 <div class="swiper-container">
                     <!-- Pictures -->
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide picture"><img src="sklad/skladheader.jpg" alt="1"></div>
-                        <div class="swiper-slide picture"><img src="sklad/skladheader.jpg" alt="2"></div>
-                        <div class="swiper-slide picture"><img src="sklad/skladheader.jpg" alt="3"></div>
-                        <div class="swiper-slide picture"><img src="sklad/skladheader.jpg" alt="4"></div>
-                        <div class="swiper-slide picture"><img src="sklad/skladheader.jpg" alt="5"></div>
-                        <div class="swiper-slide picture"><img src="sklad/skladheader.jpg" alt="6"></div>
-                        <div class="swiper-slide picture"><img src="sklad/skladheader.jpg" alt="7"></div>
-                        <div class="swiper-slide picture"><img src="sklad/skladheader.jpg" alt="8"></div>
+                        <div class="swiper-slide picture"><img src="img/oxoo_profile.jpg" alt="1"></div>
+                        <div class="swiper-slide picture"><img src="img/SMOLIKJA_profile.jpg" alt="2"></div>
+                        <div class="swiper-slide picture"><img src="img/DONE_profile.jpg" alt="3"></div>
+                        <div class="swiper-slide picture"><img src="img/AMT_profile.jpg" alt="4"></div>
+                        <div class="swiper-slide picture"><img src="img/Meloon_profile.jpg" alt="5"></div>
+                        <div class="swiper-slide picture"><img src="img/avo0xid_profile.jpg" alt="6"></div>
+                        <div class="swiper-slide picture"><img src="img/Dan_profile.jpg" alt="7"></div>
+                        <div class="swiper-slide picture"><img src="img/skladheader.jpg" alt="8"></div>
                     </div>
                 </div>
             </div>
@@ -799,42 +831,58 @@
                 {
                     nickname: "OXOO",
                     name: "Lukáš Dřevjaný",
-                    content: "Audio-visual artist whose work raises from rave underground and resides at the cutting edge of contemporary digital art. Blending elements of abstract expressionism with a futurist sensibility, oxoo constructs immersive visual experiences that challenge the viewer’s perceptions of reality. Through use of deep, resonant colors —particularly reds, whites and blacks— oxoo explores the tension between chaos and order, technology and humanity, stretching the boundaries of traditional visual storytelling."
+                    content: "Audio-visual artist whose work raises from rave underground and resides at the cutting edge of contemporary digital art. Blending elements of abstract expressionism with a futurist sensibility, oxoo constructs immersive visual experiences that challenge the viewer’s perceptions of reality. Through use of deep, resonant colors —particularly reds, whites and blacks— oxoo explores the tension between chaos and order, technology and humanity, stretching the boundaries of traditional visual storytelling.",
+                    image: "img/oxoo_profile.jpg"
+                    //website: "https://oxoo.digital/"
                 },
                 {
                     nickname: "SMOLIKJA",
                     name: "Jakub Smolík",
-                    content: "Mobile app developer, software engineer."
+                    content: "Mobile app developer, software engineer.",
+                    image: "img/SMOLIKJA_profile.jpg"
+                    //website: "https://www.instagram.com/jakubsmolik/?hl=cs"
                 },
                 {
                     nickname: "DONE",
                     name: "Daniel Randus",
-                    content: "Motion designer, animator, visualiser and game-developer."
+                    content: "Motion designer, animator, visualiser and game-developer.",
+                    image: "img/DONE_profile.jpg"
+                    //website: "https://danielrandus.art/"
                 },
                 {
                     nickname: "AMT",
                     name: "Nikita Kutimskij",
-                    content: "3D Generalist."
+                    content: "3D Generalist.",
+                    image: "img/AMT_profile.jpg"
+                    //website: "https://oxoo.digital/"
                 },
                 {
                     nickname: "MELOON",
                     name: "Matěj Meloun",
-                    content: "Junior digital artist využívající prvky 3d a motion grafiky. Inspirován prací studii ManVsMachines, Signal Creative, Aixsponza."
+                    content: "Junior digital artist využívající prvky 3d a motion grafiky. Inspirován prací studii ManVsMachines, Signal Creative, Aixsponza.",
+                    image: "img/Meloon_profile.jpg"
+                    //website: "https://www.instagram.com/meloon.m/"
                 },
                 {
                     nickname: "avo0xid",
                     name: "Daria",
-                    content: "3D character animator, ."
+                    content: "3D character animator, .",
+                    image: "img/avo0xid_profile.jpg"
+                    //website: "https://www.instagram.com/avo0xid/"
                 },
                 {
                     nickname: "DAN",
                     name: "Dan Holas",
-                    content: "Architekt, lumberjack."
+                    content: "Architekt, lumberjack.",
+                    image: "img/Dan_profile.jpg"
+                    //website: "https://www.instagram.com/danholas/"
                 },
                 {
                     nickname: "THIS COULD BE YOU",
                     name: "YOUR NAME",
-                    content: "YOUR DESCRIPTION."
+                    content: "YOUR DESCRIPTION.",
+                    image: "img/skladheader.jpg"
+                    //website: "YOUR WEB"
                 }
             ];
 
