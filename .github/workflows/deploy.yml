@@ -8,9 +8,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Trigger remote deploy
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: '[${{ secrets.LUCINKA_HOST }}]'
-          username: ${{ secrets.LUCINKA_USER }}
-          key: ${{ secrets.LUCINKA_DEPLOY_KEY }}
-          script: |
+        env:
+          SSH_HOST: ${{ secrets.LUCINKA_HOST }}
+          SSH_USER: ${{ secrets.LUCINKA_USER }}
+          SSH_KEY: ${{ secrets.LUCINKA_DEPLOY_KEY }}
+        run: >
+          mkdir -p ~/.ssh
+
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/id_lucinka
+
+          chmod 600 ~/.ssh/id_lucinka
+
+          ssh-keyscan -6 "[$SSH_HOST]" >> ~/.ssh/known_hosts || true
+
+          ssh -6 -i ~/.ssh/id_lucinka \
+              -o StrictHostKeyChecking=accept-new \
+              "$SSH_USER@[$SSH_HOST]" \
+              "echo ok"
