@@ -12,16 +12,13 @@ jobs:
           SSH_HOST: ${{ secrets.LUCINKA_HOST }}
           SSH_USER: ${{ secrets.LUCINKA_USER }}
           SSH_KEY: ${{ secrets.LUCINKA_DEPLOY_KEY }}
-        run: >
+        run: |
           mkdir -p ~/.ssh
-
           printf '%s\n' "$SSH_KEY" > ~/.ssh/id_lucinka
-
           chmod 600 ~/.ssh/id_lucinka
-
+          # volitelně: přidej host key, ať se neptá na fingerprint
           ssh-keyscan -6 "[$SSH_HOST]" >> ~/.ssh/known_hosts || true
-
           ssh -6 -i ~/.ssh/id_lucinka \
               -o StrictHostKeyChecking=accept-new \
               "$SSH_USER@[$SSH_HOST]" \
-              "echo ok"
+              true
