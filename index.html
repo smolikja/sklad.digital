@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>sklad.digital — In progress</title>
+    <meta name="description" content="Art & Tech studio. Website in progress." />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:title" content="sklad.digital — In progress" />
+    <meta property="og:description" content="Art & Tech studio. Website in progress." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sklad.digital" />
+    <meta name="twitter:card" content="summary" />
+
+    <!-- Theming -->
+    <meta name="theme-color" content="#0ea5e9" />
+    <meta name="color-scheme" content="light dark" />
+
+    <!-- Favicon (emoji, zero extra assets) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='86'>📦</text></svg>">
+
+    <style>
+      /* Minimal, modern, glassy. Dark/light aware. */
+      :root {
+        --bg: #0b1020;
+        --fg: #e6edf3;
+        --muted: #9aa4b2;
+        --accent: #0ea5e9;
+        --panel: color-mix(in oklab, white 8%, black 92%);
+        --border: color-mix(in oklab, var(--fg) 14%, transparent);
+      }
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #f8fafc;
+          --fg: #0b1220;
+          --muted: #475569;
+          --accent: #0284c7;
+          --panel: rgba(255,255,255,.7);
+          --border: #e2e8f0cc;
+        }
+      }
+
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        color: var(--fg);
+        background:
+          radial-gradient(1200px 800px at 12% 10%, color-mix(in oklab, var(--accent) 20%, transparent), transparent),
+          radial-gradient(900px 600px at 88% 18%, color-mix(in oklab, var(--accent) 12%, transparent), transparent),
+          var(--bg);
+        display: grid; place-items: center;
+      }
+
+      main {
+        width: min(840px, 92vw);
+        border-radius: 24px;
+        padding: clamp(28px, 5vw, 48px);
+        border: 1px solid var(--border);
+        background: color-mix(in oklab, var(--panel) 92%, transparent);
+        backdrop-filter: blur(12px) saturate(140%);
+        box-shadow: 0 20px 60px color-mix(in oklab, black 34%, transparent);
+        text-align: center;
+      }
+
+      .logo { font-size: clamp(34px, 6vw, 44px); }
+      h1 { margin: 10px 0 6px; font-size: clamp(28px, 7vw, 56px); letter-spacing: .2px; }
+      .sub { color: var(--muted); font-size: clamp(14px, 2.6vw, 18px); }
+      .status { margin-top: clamp(14px, 3vw, 20px); font-weight: 600; opacity: .9; }
+      .dot { display: inline-block; width: .6em; height: .6em; border-radius: 999px; background: var(--accent); box-shadow: 0 0 14px color-mix(in oklab, var(--accent) 60%, transparent); margin-right: .5ch; }
+
+      footer { margin-top: 22px; color: var(--muted); font-size: 12px; }
+    </style>
+  </head>
+  <body>
+    <main role="main" aria-label="sklad.digital">
+      <div class="logo" aria-hidden="true">📦</div>
+      <h1>sklad.digital</h1>
+      <p class="sub">Art & Tech studio</p>
+      <p class="status"><span class="dot" aria-hidden="true"></span>Website in progress</p>
+      <footer>© <span id="year"></span> sklad.digital</footer>
+    </main>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
