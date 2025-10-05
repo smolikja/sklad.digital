@@ -10,7 +10,7 @@ jobs:
       - name: Trigger remote deploy
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.LUCINKA_HOST }}
+          host: '[${{ secrets.LUCINKA_HOST }}]'
           username: ${{ secrets.LUCINKA_USER }}
           key: ${{ secrets.LUCINKA_DEPLOY_KEY }}
           script: |
