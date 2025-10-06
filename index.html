@@ -15,21 +15,20 @@
     <meta name="twitter:card" content="summary" />
 
     <!-- Theming -->
-    <meta name="theme-color" content="#0ea5e9" />
+    <meta name="theme-color" content="#0b1324" />
     <meta name="color-scheme" content="light dark" />
 
     <!-- Favicon (emoji, zero extra assets) -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='86'>📦</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='86'>🎨</text></svg>">
 
     <style>
-      /* Minimal, modern, glassy. Dark/light aware. */
       :root {
-        --bg: #0b1020;
+        --bg: #05070e;
         --fg: #e6edf3;
         --muted: #9aa4b2;
         --accent: #0ea5e9;
-        --panel: color-mix(in oklab, white 8%, black 92%);
-        --border: color-mix(in oklab, var(--fg) 14%, transparent);
+        --panel: color-mix(in oklab, #0a0f1d 60%, transparent);
+        --border: color-mix(in oklab, var(--fg) 12%, transparent);
       }
       @media (prefers-color-scheme: light) {
         :root {
@@ -37,7 +36,7 @@
           --fg: #0b1220;
           --muted: #475569;
           --accent: #0284c7;
-          --panel: rgba(255,255,255,.7);
+          --panel: rgba(255,255,255,.72);
           --border: #e2e8f0cc;
         }
       }
@@ -49,38 +48,58 @@
         font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
         color: var(--fg);
         background:
-          radial-gradient(1200px 800px at 12% 10%, color-mix(in oklab, var(--accent) 20%, transparent), transparent),
-          radial-gradient(900px 600px at 88% 18%, color-mix(in oklab, var(--accent) 12%, transparent), transparent),
+          radial-gradient(1200px 800px at 15% 10%, color-mix(in oklab, var(--accent) 14%, transparent), transparent),
+          radial-gradient(900px 600px at 85% 20%, color-mix(in oklab, var(--accent) 10%, transparent), transparent),
           var(--bg);
         display: grid; place-items: center;
       }
 
       main {
-        width: min(840px, 92vw);
-        border-radius: 24px;
+        width: min(820px, 92vw);
+        border-radius: 26px;
         padding: clamp(28px, 5vw, 48px);
         border: 1px solid var(--border);
         background: color-mix(in oklab, var(--panel) 92%, transparent);
-        backdrop-filter: blur(12px) saturate(140%);
-        box-shadow: 0 20px 60px color-mix(in oklab, black 34%, transparent);
+        backdrop-filter: blur(14px) saturate(150%);
+        box-shadow: 0 24px 80px color-mix(in oklab, black 42%, transparent);
         text-align: center;
       }
 
-      .logo { font-size: clamp(34px, 6vw, 44px); }
       h1 { margin: 10px 0 6px; font-size: clamp(28px, 7vw, 56px); letter-spacing: .2px; }
       .sub { color: var(--muted); font-size: clamp(14px, 2.6vw, 18px); }
-      .status { margin-top: clamp(14px, 3vw, 20px); font-weight: 600; opacity: .9; }
+      .status { margin-top: clamp(12px, 3vw, 18px); font-weight: 600; opacity: .95; }
       .dot { display: inline-block; width: .6em; height: .6em; border-radius: 999px; background: var(--accent); box-shadow: 0 0 14px color-mix(in oklab, var(--accent) 60%, transparent); margin-right: .5ch; }
 
-      footer { margin-top: 22px; color: var(--muted); font-size: 12px; }
+      .cta { margin-top: clamp(18px, 3.5vw, 22px); display: flex; justify-content: center; }
+      .btn { 
+        display: inline-flex; align-items: center; gap: .6ch;
+        padding: 10px 14px; border-radius: 12px;
+        text-decoration: none; font-weight: 600;
+        border: 1px solid var(--border);
+        background: color-mix(in oklab, var(--panel) 70%, transparent);
+        box-shadow: inset 0 1px 0 color-mix(in oklab, white 10%, transparent);
+        transition: transform .12s ease, border-color .2s ease, background .2s ease;
+      }
+      .btn:hover { transform: translateY(-1px); border-color: color-mix(in oklab, var(--accent) 40%, var(--border)); }
+      .btn:focus-visible { outline: 2px solid color-mix(in oklab, var(--accent) 60%, transparent); outline-offset: 2px; }
+      .btn .emoji { font-size: 1.2em; }
+
+      footer { margin-top: 20px; color: var(--muted); font-size: 12px; }
     </style>
   </head>
   <body>
     <main role="main" aria-label="sklad.digital">
-      <div class="logo" aria-hidden="true">📦</div>
       <h1>sklad.digital</h1>
       <p class="sub">Art & Tech studio</p>
       <p class="status"><span class="dot" aria-hidden="true"></span>Website in progress</p>
+
+      <div class="cta">
+        <a class="btn" href="https://discord.gg/rQtbRrkQFC" target="_blank" rel="noopener">
+          <span class="emoji" aria-hidden="true">💬</span>
+          <span>Join our Discord</span>
+        </a>
+      </div>
+
       <footer>© <span id="year"></span> sklad.digital</footer>
     </main>
 
