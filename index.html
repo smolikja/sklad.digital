@@ -1313,69 +1313,77 @@
                 let lastScrollTime = 0;
                 const scrollDelay = 300; // Minimum time between scroll actions
 
-                // Use a non-passive wheel listener so we can call preventDefault
-                window.addEventListener('wheel', function(e) {
+                function handleScrollDelta(deltaY, e) {
                     const currentTime = Date.now();
-
-                    
-
                     if (currentTime - lastScrollTime < scrollDelay) {
-                        e.preventDefault();
+                        if (e) e.preventDefault();
                         return;
                     }
 
                     if (currentState === 1) {
-                        // First scroll transitions to state 2
-                        if (e.deltaY > 0) {
-                            e.preventDefault();
+                        if (deltaY > 0) { // down
+                            if (e) e.preventDefault();
                             updateState(2);
                             lastScrollTime = currentTime;
                         }
                     } else if (currentState === 2) {
-                        // Second scroll transitions to state 3
-                        if (e.deltaY > 0) {
-                            e.preventDefault();
+                        if (deltaY > 0) { // to state 3
+                            if (e) e.preventDefault();
                             updateState(3);
                             lastScrollTime = currentTime;
-                        } else if (e.deltaY < 0) {
-                            e.preventDefault();
+                        } else if (deltaY < 0) { // back to 1
+                            if (e) e.preventDefault();
                             updateState(1);
                             lastScrollTime = currentTime;
                         }
                     } else if (currentState === 3) {
-                        // In state 3, scroll controls swiper slides
-                        e.preventDefault();
-
-                        if (e.deltaY > 0) {
-                            // Scroll down - next slide
+                        if (e) e.preventDefault();
+                        if (deltaY > 0) {
                             if (currentSlide < 7) {
                                 swiper.slideNext();
                                 scrollCount++;
-                                
                             } else {
-                                // After 8th slide (index 7), go to state 4
-                                
                                 updateState(4);
                             }
-                        } else {
-                            // Scroll up - previous slide or back to state 2
+                        } else if (deltaY < 0) {
                             if (currentSlide > 0) {
                                 swiper.slidePrev();
                                 scrollCount--;
-                                
                             } else {
-                                
                                 updateState(2);
                             }
                         }
                         lastScrollTime = currentTime;
                     } else if (currentState === 4) {
-                        // In state 4, allow normal scrolling but can go back
-                        if (e.deltaY < 0 && window.scrollY === 0) {
-                            e.preventDefault();
+                        if (deltaY < 0 && window.scrollY === 0) {
+                            if (e) e.preventDefault();
                             updateState(3);
                             lastScrollTime = currentTime;
                         }
+                    }
+                }
+
+                // Mouse wheel (desktop)
+                window.addEventListener('wheel', function(e) {
+                    handleScrollDelta(e.deltaY, e);
+                }, { passive: false });
+
+                // Touch swipe (mobile)
+                let touchStartY = null;
+                window.addEventListener('touchstart', function(e) {
+                    if (!e.touches || e.touches.length === 0) return;
+                    touchStartY = e.touches[0].clientY;
+                }, { passive: true });
+
+                window.addEventListener('touchmove', function(e) {
+                    if (touchStartY === null) return;
+                    if (!e.touches || e.touches.length === 0) return;
+                    const currentY = e.touches[0].clientY;
+                    const delta = touchStartY - currentY; // positive if swipe up
+                    const threshold = 25; // pixels
+                    if (Math.abs(delta) >= threshold) {
+                        handleScrollDelta(delta, e);
+                        touchStartY = currentY; // reset to allow continued navigation
                     }
                 }, { passive: false });
             }
