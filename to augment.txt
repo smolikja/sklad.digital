@@ -1,0 +1,21 @@
+same like middle slides where is editable image, make these things editable too:
+1. three-row-text website
+rows[0].textContent = content.nickname;
+rows[1].textContent = content.name;
+rows[2].textContent = "loremipsum.website";
+there are websites already prepared for it
+
+2. state-3-layout left-picture
+nickname: "DONE",
+name: "Daniel Randus",
+content: "Motion designer, animator, visualiser and game-developer.",
+image: "img/DONE_profile.jpg"
+//website: "https://danielrandus.art/"
+there are pictures prepared for it also, but not linked yet so on every slide change the image too
+
+3. state-3-layout right-rectangle
+make editable texts for each one too. same like in "middle-textbox" the <p> text
+
+4. instead of "swiper-slide picture swiper-slide-active" picture where is picture from "swiper-pagination-bullet", make it slideshow with left and right arrows. the slideshow will be editable, so I can put more than one images and videos. videos are autoplay without sound. in folder "video" there is already one video to use "Meloon_presents.mp4". make other examples as "img/skladheader.jpg" for now. whole slideshow will have function when clicked on it will go fullscreen and cancel button to go back to slideshow.
+
+5. now state 1 and 2 have picture from first swiper-slide picture and state 4 have pictures from last swiper-slide picture. I want to make them specific also, make them "img/skladheader.jpg" for now but make 2 editable picture for 1,2 and for 4th
