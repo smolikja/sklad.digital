@@ -152,11 +152,11 @@
             display: flex;
         }
 
-        .swiper-slide img {
+        .swiper-slide img, .swiper-slide video{
             background-color: black;
             display: block;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
         }
 
 
@@ -400,11 +400,25 @@
 
         /* Link styling inside right-rectangle */
         .right-rectangle .links-row a {
+            display: inline-flex;
+            align-items: center;
+            background: rgb(0 0 0 / 50%);
             color: white;
-            text-decoration: underline;
-            margin-right: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 8px 12px;
+            margin-right: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         .right-rectangle .links-row a:last-child { margin-right: 0; }
+        .right-rectangle .links-row a:hover {
+            background: rgba(255, 255, 255, 0.18);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
 
         /* Hide cancel button by default (desktop); mobile overrides show it */
         .cancel-expand { display: none; }
@@ -431,7 +445,7 @@
             position: fixed;
             top: 1rem;
             right: 1rem;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgb(0 0 0 / 50%);
             color: white;
             border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 10px;
@@ -648,6 +662,7 @@
             width: 100%;
             height: calc(100vh - 40%);
             transition: height 0.8s ease;
+            display: none; /* hidden by default; shown in states 1,2,4 */
         }
 
         .state-hero img {
@@ -659,6 +674,7 @@
         .state-1 .state-hero,
         .state-2 .state-hero,
         .state-4 .state-hero { display: block; }
+        .state-3 .state-hero { display: none; }
 
         /* State-specific hero heights for smooth transitions */
         .state-1 .state-hero { height: 100vh; }
@@ -817,6 +833,13 @@
                 height: calc(100% - 4rem);
            }
 
+            .swiper-slide img, .swiper-slide video{
+            background-color: black;
+            display: block;
+            height: 100%;
+            object-fit: contain;
+        }
+
            .text-column {
                min-height: auto;
                height: auto;
@@ -882,9 +905,9 @@
                 align-self: end;
             }
 
-            /* Cancel button visible only when expanded */
+            /* Cancel/expand button (visible on mobile even when collapsed) */
             .state-3 .state-3-layout .cancel-expand {
-                display: none;
+                display: inline-flex;
                 position: absolute;
                 top: 0;
                 left: 50%;
@@ -991,9 +1014,7 @@
                         <div class="swiper-slide picture"><img src="img/imgdaniel/daniel_profile.jpg" alt="3"></div>
                         <div class="swiper-slide picture"><img src="img/imgnikita/nikita_profile.jpg" alt="4"></div>
                         <div class="swiper-slide picture"><img src="img/Meloon_profile.jpg" alt="5"></div>
-                        <div class="swiper-slide picture"><img src="img/avo0xid_profile.jpg" alt="6"></div>
-                        <div class="swiper-slide picture"><img src="img/Dan_profile.jpg" alt="7"></div>
-                        <div class="swiper-slide picture"><img src="img/skladheader.jpg" alt="8"></div>
+                        <div class="swiper-slide picture"><img src="img/skladheader.jpg" alt="6"></div>
                     </div>
                 </div>
             </div>
@@ -1013,7 +1034,9 @@
         <!-- Bottom content area -->
         <div class="middle-intro-content">
             <div>
-                <p>Sklad je digitální prostor pro kreativní práci a experimentování. Místo, kde se setkávají umělci, designéři a technologové.</p>
+                <p>SKLAD 3D</p>
+                <p>Bývalý sklad, který jsme rozdělili do 3 prostorů.</p>
+                <p>Prostor pro kreativní práci a experimentování. Místo, kde se setkávají umělci, designéři a technologové.</p>
             </div>
             
         </div>
@@ -1030,10 +1053,8 @@
             </div>
             <div class="text-column">
                 <h3>Kontakt</h3>
-                <p>Arbesovo náměstí</p>
-                <p><strong>Email:</strong> info@sklad3d.digital<br>
-                <strong>Telefon:</strong> +420 123 456 789<br>
-                <strong>Adresa:</strong> Praha, Česká republika</p>
+                <p><strong>Telefon:</strong> +420 734 412 721<br>
+                <strong>Adresa:</strong> Drtinova 10, Arbesovo náměstí, Praha</p>
             </div>
         </div>
 
@@ -1096,20 +1117,6 @@
                     content: "Junior digital artist využívající prvky 3d a motion grafiky. Inspirován prací studii ManVsMachines, Signal Creative, Aixsponza.",
                     content2: "Blender, After Effects, Photoshop, Davinci Resolve, Houdini, Resolume Arena, Veo 3, Kling.ai",
                     image: "img/Meloon_profile.jpg"
-                },
-                {
-                    nickname: "avo0xid",
-                    name: "Daria",
-                    content: "3D character animator, .",
-                    content2: "",
-                    image: "img/avo0xid_profile.jpg"
-                },
-                {
-                    nickname: "DAN",
-                    name: "Dan Holas",
-                    content: "Architekt, lumberjack.",
-                    content2: "",
-                    image: "img/Dan_profile.jpg"
                 },
                 {
                     nickname: "THIS COULD BE YOU",
@@ -1197,6 +1204,9 @@
                     if (layout && layout.classList.contains('expanded')) {
                         layout.classList.remove('expanded');
                         const container = layout.parentElement ? layout.parentElement.querySelector('.middle-slides') : null;
+                        // Reset caret to collapsed state symbol
+                        const cancel = layout.querySelector('.cancel-expand');
+                        if (cancel) cancel.textContent = '^';
                     }
                 }
 
@@ -1209,6 +1219,19 @@
                     if (layout.__expandBound) return;
                     layout.__expandBound = true;
 
+                    // Ensure the button exists in collapsed state with caret
+                    let initBtn = layout.querySelector('.cancel-expand');
+                    if (!initBtn) {
+                        initBtn = document.createElement('button');
+                        initBtn.className = 'cancel-expand';
+                        initBtn.type = 'button';
+                        initBtn.textContent = '^';
+                        layout.appendChild(initBtn);
+                    } else {
+                        // On load keep caret when not expanded
+                        if (!layout.classList.contains('expanded')) initBtn.textContent = '^';
+                    }
+
                     layout.addEventListener('click', function(e){
                         if (window.innerWidth > 768) return;
                         if (currentState !== 3) return;
@@ -1220,19 +1243,21 @@
                             const mtb = document.querySelector('.middle-textbox');
                             if (mtb) mtb.classList.remove('click-hint');
                             const container = layout.parentElement ? layout.parentElement.querySelector('.middle-slides') : null;
-                            // Create cancel button if not present
+                            // Create or update cancel button to X when expanded
                             let cancel = layout.querySelector('.cancel-expand');
                             if (!cancel) {
                                 cancel = document.createElement('button');
                                 cancel.className = 'cancel-expand';
                                 cancel.type = 'button';
-                                cancel.textContent = 'X';
                                 layout.appendChild(cancel);
                             }
+                            cancel.textContent = 'X';
                             cancel.addEventListener('click', function(ev){
                                 ev.stopPropagation();
                                 layout.classList.remove('expanded');
                                 const container = layout.parentElement ? layout.parentElement.querySelector('.middle-slides') : null;
+                                const cancel = layout.querySelector('.cancel-expand');
+                                if (cancel) cancel.textContent = '^';
                             }, { once: true });
                         }
                     });
@@ -1257,7 +1282,8 @@
                 updateSlideContent(); // Initialize with first slide content
                 applyMobileMiddleHint();
                 setupScrollHandling();
-            });
+
+                            });
             // Function to update the current state
             function updateState(newState) {
                 
@@ -1338,8 +1364,9 @@
                         }
                     } else if (currentState === 3) {
                         if (e) e.preventDefault();
+                        const lastIndex = (typeof swiper !== 'undefined' && swiper && swiper.slides) ? (swiper.slides.length - 1) : ((slideContent && slideContent.length) ? slideContent.length - 1 : 0);
                         if (deltaY > 0) {
-                            if (currentSlide < 7) {
+                            if (currentSlide < lastIndex) {
                                 swiper.slideNext();
                                 scrollCount++;
                             } else {
@@ -1370,22 +1397,64 @@
 
                 // Touch swipe (mobile)
                 let touchStartY = null;
+                let touchStartX = null;
+                let swipeHandled = false;
                 window.addEventListener('touchstart', function(e) {
                     if (!e.touches || e.touches.length === 0) return;
                     touchStartY = e.touches[0].clientY;
+                    touchStartX = e.touches[0].clientX;
+                    swipeHandled = false;
                 }, { passive: true });
 
                 window.addEventListener('touchmove', function(e) {
-                    if (touchStartY === null) return;
+                    if ((touchStartY === null) || (touchStartX === null)) return;
                     if (!e.touches || e.touches.length === 0) return;
-                    const currentY = e.touches[0].clientY;
-                    const delta = touchStartY - currentY; // positive if swipe up
-                    const threshold = 25; // pixels
-                    if (Math.abs(delta) >= threshold) {
-                        handleScrollDelta(delta, e);
-                        touchStartY = currentY; // reset to allow continued navigation
+                    const t = e.touches[0];
+                    const currentY = t.clientY;
+                    const currentX = t.clientX;
+                    const dy = touchStartY - currentY; // >0 swipe up
+                    const dx = touchStartX - currentX; // >0 swipe left
+                    const vThreshold = 25; // px
+                    const hThreshold = 30; // px
+
+                    // Horizontal swipe: slides in state 3; state transitions in 1,2,4
+                    if (!swipeHandled && Math.abs(dx) > Math.abs(dy) && Math.abs(dx) >= hThreshold) {
+                        e.preventDefault();
+                        if (currentState === 3) {
+                            var lastIndex = (typeof swiper !== 'undefined' && swiper && swiper.slides) ? (swiper.slides.length - 1) : 7;
+                            if (dx > 0) {
+                                if (currentSlide < lastIndex) { swiper.slideNext(); }
+                                else { updateState(4); }
+                            } else {
+                                if (currentSlide > 0) { swiper.slidePrev(); }
+                                else { updateState(2); }
+                            }
+                        } else {
+                            // Navigate states: left -> next state, right -> previous state
+                            if (dx > 0 && currentState < 4) {
+                                updateState(currentState + 1);
+                            } else if (dx < 0 && currentState > 1) {
+                                updateState(currentState - 1);
+                            }
+                        }
+                        lastScrollTime = Date.now();
+                        swipeHandled = true; // one slide/state per gesture
+                        return;
+                    }
+
+                    // Vertical swipe controls states/slides
+                    if (Math.abs(dy) >= vThreshold) {
+                        handleScrollDelta(dy, e);
+                        touchStartY = currentY; // allow continued navigation
+                        touchStartX = currentX;
                     }
                 }, { passive: false });
+
+                window.addEventListener('touchend', function() {
+                    touchStartX = null;
+                    touchStartY = null;
+                    swipeHandled = false;
+                }, { passive: true });
             }
 
             // Function to update pagination scroll position
@@ -1430,15 +1499,13 @@
                 4: { website: 'https://www.instagram.com/meloon.m/', media: [ 
                         { type: 'video', src: 'video/meloon/Meloon_presents.mp4' },
                     ]},
-                5: { website: 'https://www.instagram.com/avo0xid/', media: [ { type: 'image', src: 'img/avo0xid_profile.jpg' } ] },
-                6: { website: 'https://www.instagram.com/danholas/', media: [ { type: 'image', src: 'img/Dan_profile.jpg' } ] },
-                7: { website: 'YOUR WEB', media: [ { type: 'image', src: 'img/skladheader.jpg' } ] }
+                5: { website: 'YOUR WEB', media: [ { type: 'image', src: 'img/skladheader.jpg' } ] }
             };
 
             // Configurable hero images for states 1,2,4
             const stateHeroImages = {
                 1: 'img/skladheader.jpg',
-                2: 'img/skladheader.jpg',
+                2: 'img/skladmembers.jpg',
                 4: 'img/skladheader.jpg'
             };
 
@@ -1670,6 +1737,7 @@
 </body>
 
 </html>
+
 
 
 
