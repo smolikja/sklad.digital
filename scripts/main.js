@@ -125,23 +125,6 @@ carouselWrappers.forEach((wrapper) => {
     }
   });
 
-  const handleWheel = (event) => {
-    if (Math.abs(event.deltaX) > Math.abs(event.deltaY)) {
-      return;
-    }
-    event.preventDefault();
-    track.scrollBy({
-      left: event.deltaY,
-      behavior: 'auto',
-    });
-  };
-
-  track.addEventListener(
-    'wheel',
-    handleWheel,
-    { passive: false },
-  );
-
   const resizeHandler = () => window.requestAnimationFrame(updateButtons);
   window.addEventListener('resize', resizeHandler);
 
