@@ -173,9 +173,11 @@ const openLightbox = (media, caption) => {
     element = document.createElement('video');
     element.src = media.currentSrc || media.getAttribute('src') || '';
     element.controls = true;
-    element.preload = 'metadata';
+    element.preload = 'auto';
     element.setAttribute('playsinline', '');
     element.setAttribute('webkit-playsinline', '');
+    element.muted = true;
+    element.loop = true;
     const poster = media.getAttribute('poster');
     if (poster) {
       element.poster = poster;
@@ -217,6 +219,22 @@ mediaSlides.forEach((slide) => {
   const media = slide.querySelector('video, img');
   if (!media) {
     return;
+  }
+
+  if (media.tagName === 'VIDEO') {
+    media.muted = true;
+    media.autoplay = true;
+    media.loop = true;
+    media.playsInline = true;
+    media.setAttribute('playsinline', '');
+    media.setAttribute('webkit-playsinline', '');
+    media.addEventListener('canplay', () => {
+      media
+        .play()
+        .catch(() => {
+          /* autoplay ignored */
+        });
+    });
   }
 
   const caption = slide.querySelector('figcaption')?.textContent?.trim() ?? '';
