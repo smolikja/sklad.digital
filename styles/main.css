@@ -118,7 +118,7 @@ button {
 
 .top-nav {
   position: relative;
-  z-index: 1;
+  z-index: 3;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -191,6 +191,7 @@ button {
   position: absolute;
   top: 120%;
   right: 0;
+  z-index: 4;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -207,6 +208,16 @@ button {
 .nav-menu a {
   color: var(--color-text-muted);
   font-weight: 500;
+}
+
+@media (max-width: 639px) {
+  .js-enabled .nav-menu {
+    display: none;
+  }
+
+  .js-enabled .nav-menu.is-open {
+    display: flex;
+  }
 }
 
 .hero__content {

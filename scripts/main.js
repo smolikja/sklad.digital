@@ -1,27 +1,36 @@
+const root = document.documentElement;
+root.classList.remove('no-js');
+root.classList.add('js-enabled');
+
 const navToggle = document.querySelector('.nav-toggle');
 const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-menu a');
 const navMediaQuery = window.matchMedia('(min-width: 640px)');
 
-const syncNav = (isDesktop) => {
+const updateNavVisibility = (isDesktop) => {
   if (!navMenu) {
     return;
   }
 
   if (isDesktop) {
-    navMenu.hidden = false;
     navMenu.classList.remove('is-open');
+    navMenu.removeAttribute('hidden');
     navToggle?.setAttribute('aria-expanded', 'false');
+    return;
+  }
+
+  const isExpanded = navToggle?.getAttribute('aria-expanded') === 'true';
+  navMenu.classList.toggle('is-open', Boolean(isExpanded));
+  if (isExpanded) {
+    navMenu.removeAttribute('hidden');
   } else {
-    const shouldHide = navToggle?.getAttribute('aria-expanded') !== 'true';
-    navMenu.hidden = shouldHide;
+    navMenu.setAttribute('hidden', '');
   }
 };
 
 if (navMenu) {
-  navMenu.hidden = true;
-  syncNav(navMediaQuery.matches);
-  const handler = (event) => syncNav(event.matches);
+  updateNavVisibility(navMediaQuery.matches);
+  const handler = (event) => updateNavVisibility(event.matches);
   if (typeof navMediaQuery.addEventListener === 'function') {
     navMediaQuery.addEventListener('change', handler);
   } else if (typeof navMediaQuery.addListener === 'function') {
@@ -31,19 +40,24 @@ if (navMenu) {
 
 if (navToggle && navMenu) {
   navToggle.addEventListener('click', () => {
+    if (navMediaQuery.matches) {
+      return;
+    }
+
     const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
-    navToggle.setAttribute('aria-expanded', String(!isExpanded));
-    navMenu.classList.toggle('is-open', !isExpanded);
-    navMenu.hidden = isExpanded;
+    const nextState = !isExpanded;
+    navToggle.setAttribute('aria-expanded', String(nextState));
+    updateNavVisibility(false);
   });
 
   navLinks.forEach((link) => {
     link.addEventListener('click', () => {
-      navToggle.setAttribute('aria-expanded', 'false');
-      navMenu.classList.remove('is-open');
-      if (!navMediaQuery.matches) {
-        navMenu.hidden = true;
+      if (navMediaQuery.matches) {
+        return;
       }
+
+      navToggle.setAttribute('aria-expanded', 'false');
+      updateNavVisibility(false);
     });
   });
 }
