@@ -916,6 +916,21 @@ h3 {
   }
 }
 
+@media (min-width: 768px) {
+  html,
+  body {
+    scroll-snap-type: y mandatory;
+  }
+
+  .hero,
+  main > *,
+  .section,
+  .footer {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+}
+
 @media (min-width: 960px) {
   .hero {
     padding-bottom: clamp(7rem, 11vw, 8.5rem);
@@ -948,5 +963,10 @@ h3 {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  html,
+  body {
+    scroll-snap-type: none;
   }
 }
