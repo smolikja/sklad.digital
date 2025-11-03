@@ -111,6 +111,7 @@ button {
 .brand img {
   width: 130px;
   height: auto;
+  border-radius: 0;
 }
 
 .nav-toggle {
