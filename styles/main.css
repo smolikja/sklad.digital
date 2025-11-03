@@ -79,23 +79,6 @@ button {
   cursor: pointer;
 }
 
-.skip-link {
-  position: absolute;
-  top: -48px;
-  left: 16px;
-  padding: 0.8rem 1.4rem;
-  background: var(--color-accent);
-  color: #050505;
-  border-radius: 999px;
-  font-weight: 600;
-  transition: transform var(--transition);
-  z-index: 100;
-}
-
-.skip-link:focus {
-  top: 16px;
-}
-
 .hero {
   position: relative;
   min-height: 100vh;
