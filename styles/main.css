@@ -112,7 +112,7 @@ button {
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(6, 6, 8, 0.82) 0%, rgba(4, 4, 5, 0.92) 60%, rgba(4, 4, 5, 0.98) 100%);
+  background: transparent;
   z-index: 0;
 }
 
