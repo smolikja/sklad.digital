@@ -251,7 +251,7 @@ h3 {
 .btn {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content:flex-start;
   padding: 0.95rem 2.4rem;
   border-radius: 999px;
   font-weight: 600;
@@ -366,6 +366,8 @@ h3 {
   border-radius: var(--radius-md);
   padding: clamp(1.9rem, 5vw, 2.4rem);
   display: grid;
+  align-items: start;
+  align-content: start;
   gap: 0.7rem;
   box-shadow: var(--shadow-lg);
   backdrop-filter: var(--blur-soft);
