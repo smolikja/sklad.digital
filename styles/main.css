@@ -432,6 +432,25 @@ h3 {
   color: var(--color-text-muted);
 }
 
+.member__links {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.member__links a {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+.member__links a:hover,
+.member__links a:focus-visible {
+  color: var(--color-accent-dark);
+}
+
 .member__empty {
   margin: 0;
   color: rgba(245, 245, 245, 0.55);
