@@ -697,6 +697,10 @@ h3 {
   gap: 2rem;
 }
 
+.footer__grid img {
+  border-radius: 0;
+}
+
 .footer__grid h3 {
   font-size: 0.9rem;
   text-transform: uppercase;
