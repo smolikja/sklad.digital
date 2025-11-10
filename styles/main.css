@@ -609,7 +609,7 @@ h3 {
 
 /* Inline icons for benefits */
 .benefit-rows dt .benefit-icon {
-  width: 18px;
+  width: 2rem;
   height: auto;
   display: inline-block;
 }
@@ -635,7 +635,7 @@ h3 {
 }
 
 .cta-card h3 .cta-icon {
-  width: 22px;
+  width: 2rem;
   height: auto;
   display: inline-block;
 }
