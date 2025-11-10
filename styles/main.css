@@ -597,11 +597,21 @@ h3 {
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: var(--color-accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .benefit-rows dd {
   margin: 0.6rem 0 0;
   color: var(--color-text-muted);
+}
+
+/* Inline icons for benefits */
+.benefit-rows dt .benefit-icon {
+  width: 18px;
+  height: auto;
+  display: inline-block;
 }
 
 .section--community {
@@ -615,6 +625,19 @@ h3 {
   margin: 0 auto;
   display: grid;
   gap: 1.75rem;
+}
+
+/* Icons in CTA cards */
+.cta-card h3 {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cta-card h3 .cta-icon {
+  width: 22px;
+  height: auto;
+  display: inline-block;
 }
 
 .cta-card {
