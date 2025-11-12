@@ -103,7 +103,6 @@ button {
   position: relative;
   z-index: 3;
   display: flex;
-  align-items: center;
   justify-content: space-between;
   gap: 1rem;
 }
@@ -435,6 +434,15 @@ h3 {
   color: var(--color-text-muted);
 }
 
+/* Accent highlight for brand/product mentions */
+.brand-highlight {
+  color: var(--color-accent);
+    background: #0b0b0b;
+    font-weight: 600;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
 .member__links {
   margin: 0.5rem 0 0;
   font-size: 0.9rem;
@@ -713,7 +721,7 @@ h3 {
   background: rgba(10, 12, 16, 0.75);
   border-radius: 32px;
   border: 1px solid var(--color-border);
-  padding: clamp(2.7rem, 6vw, 4.2rem);
+  padding: 2rem;
   text-align: center;
   display: grid;
   gap: 1.5rem;
@@ -992,4 +1000,9 @@ h3 {
   body {
     scroll-snap-type: none;
   }
+}
+
+.object-contain{
+    object-fit: contain !important;
+    background: black;
 }

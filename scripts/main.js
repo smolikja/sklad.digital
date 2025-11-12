@@ -145,6 +145,8 @@ carouselWrappers.forEach((wrapper) => {
   updateButtons();
 });
 
+// (Removed) JS-based highlight — using semantic <mark> in HTML instead.
+
 const lightbox = document.getElementById('media-lightbox');
 const lightboxMedia = lightbox?.querySelector('.lightbox__media');
 const lightboxCaption = lightbox?.querySelector('.lightbox__caption');
