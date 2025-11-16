@@ -1,5 +1,3 @@
-import { playIfInView } from './autoplay.js';
-
 export const initMediaSlides = ({ openLightbox, autoplayObserver }) => {
   const slides = document.querySelectorAll('.member__slide');
 
@@ -9,8 +7,7 @@ export const initMediaSlides = ({ openLightbox, autoplayObserver }) => {
       return;
     }
 
-    const caption = slide.querySelector('figcaption')?.textContent?.trim() ?? media.getAttribute('alt') ?? '';
-    media.dataset.caption = caption;
+    const caption = slide.querySelector('figcaption')?.textContent?.trim() ?? '';
     media.setAttribute('tabindex', '0');
     media.setAttribute('role', 'button');
     media.setAttribute('aria-label', caption ? `Otevřít detail: ${caption}` : 'Otevřít detail ukázky');
@@ -23,8 +20,6 @@ export const initMediaSlides = ({ openLightbox, autoplayObserver }) => {
       media.setAttribute('playsinline', '');
       media.setAttribute('webkit-playsinline', '');
       media.removeAttribute('autoplay');
-      media.preload = 'auto';
-      media.load();
       media.addEventListener('canplay', () => {
         if (!autoplayObserver) {
           media
@@ -32,14 +27,15 @@ export const initMediaSlides = ({ openLightbox, autoplayObserver }) => {
             .catch(() => {
               /* autoplay ignored */
             });
-        } else {
-          playIfInView(media);
         }
       });
-      media.addEventListener('loadeddata', () => playIfInView(media));
       autoplayObserver?.observe(media);
-      playIfInView(media);
     }
+
+    media.addEventListener('click', (event) => {
+      event.preventDefault();
+      openLightbox?.(media, caption);
+    });
 
     media.addEventListener('keydown', (event) => {
       if (event.key === 'Enter' || event.key === ' ') {
@@ -47,24 +43,5 @@ export const initMediaSlides = ({ openLightbox, autoplayObserver }) => {
         openLightbox?.(media, caption);
       }
     });
-  });
-
-  document.addEventListener('click', (event) => {
-    if (event.defaultPrevented) {
-      return;
-    }
-    if (event.target.closest('.member__control')) {
-      return;
-    }
-    const slide = event.target.closest('.member__slide');
-    if (!slide) {
-      return;
-    }
-    const media = slide.querySelector('video, img');
-    if (!media) {
-      return;
-    }
-    event.preventDefault();
-    openLightbox?.(media, media.dataset.caption ?? '');
   });
 };

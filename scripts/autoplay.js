@@ -16,25 +16,6 @@ export const createAutoplayObserver = () => {
         }
       });
     },
-    { threshold: 0.1 },
+    { threshold: 0.35 },
   );
-};
-
-export const playIfInView = (video) => {
-  const rect = video.getBoundingClientRect();
-  const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-  const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
-  const isVisible =
-    rect.top < viewportHeight * 0.9 &&
-    rect.bottom > viewportHeight * 0.1 &&
-    rect.left < viewportWidth &&
-    rect.right > 0;
-
-  if (isVisible) {
-    video
-      .play()
-      .catch(() => {
-        /* ignore autoplay errors */
-      });
-  }
 };
