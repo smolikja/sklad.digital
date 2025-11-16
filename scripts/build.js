@@ -47,8 +47,29 @@ const renderMediaItem = (item) => {
                 </figure>`;
   }
   return `<figure class="member__slide">
-                  <img${classAttr} src="${item.src}" alt="${item.alt ?? ''}">
+                  <img${classAttr} src="${item.src}" alt="${item.alt ?? ''}" loading="lazy" decoding="async">
                 </figure>`;
+};
+
+const buildAssetManifest = (members) => {
+  const assets = new Set();
+
+  for (const member of members) {
+    if (member.image?.src) assets.add(member.image.src);
+    for (const item of member.media || []) {
+      if (item.src) assets.add(item.src);
+      if (item.poster) assets.add(item.poster);
+    }
+  }
+
+  return Array.from(assets);
+};
+
+const injectAssetManifestScript = (scriptsHtml, members) => {
+  const manifest = buildAssetManifest(members);
+  if (!manifest.length) return scriptsHtml;
+  const manifestScript = `<script>window.__memberAssets=${JSON.stringify(manifest)};</script>`;
+  return `${manifestScript}\n${scriptsHtml}`;
 };
 
 const renderMember = (member) => {
@@ -72,7 +93,7 @@ ${member.media.map((item) => renderMediaItem(item)).join('\n')}
 
   return `          <article class="member">
             <div class="member__header">
-              <img src="${member.image.src}" alt="${member.image.alt}" width="${member.image.width}" height="${member.image.height}" loading="lazy">
+              <img src="${member.image.src}" alt="${member.image.alt}" width="${member.image.width}" height="${member.image.height}" loading="lazy" decoding="async">
               <div>
                 <h3>${nameDisplay}</h3>
                 <p class="member__role">${member.role}</p>${bioBlock}${renderLinks(member.links)}
@@ -129,6 +150,7 @@ const buildHtml = () => {
   const members = loadJson('members.json');
   const benefits = loadJson('benefits.json');
   const faqs = loadJson('faq.json');
+  const scripts = injectAssetManifestScript(readPartial('scripts'), members);
 
   const placeholders = {
     head: readPartial('head'),
@@ -141,7 +163,7 @@ const buildHtml = () => {
     callout: readPartial('callout'),
     footer: readPartial('footer'),
     lightbox: readPartial('lightbox'),
-    scripts: readPartial('scripts'),
+    scripts,
   };
 
   const output = replacePlaceholders(layout, placeholders);

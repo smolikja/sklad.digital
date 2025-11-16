@@ -4,6 +4,7 @@ import { initMemberCarousels } from './carousel.js';
 import { initLightbox } from './lightbox.js';
 import { createAutoplayObserver } from './autoplay.js';
 import { initMediaSlides } from './media-slides.js';
+import { warmMemberAssets } from './prefetch.js';
 
 const root = document.documentElement;
 root.classList.remove('no-js');
@@ -15,3 +16,4 @@ initMemberCarousels();
 const { openLightbox } = initLightbox();
 const videoAutoplayObserver = createAutoplayObserver();
 initMediaSlides({ openLightbox, autoplayObserver: videoAutoplayObserver });
+warmMemberAssets(window.__memberAssets || []);

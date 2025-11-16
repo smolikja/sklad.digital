@@ -5,16 +5,16 @@
     "nickname": "oxoo",
     "role": "Audiovizuální umělec",
     "bio": "Lukáš Drevjany alias „oxoo“ je audiovizuální umělec, jehož tvorba má kořeny v rave undergroundu a pohybuje se na hranici současného digitálního umění. Kombinací prvků abstraktního expresionismu s futuristickou citlivostí vytváří oxoo imerzivní vizuální zážitky, které zpochybňují divákovo vnímání reality. Prostřednictvím rezonujících barev a kontrastu oxoo zkoumá napětí mezi chaosem a řádem, technologií a lidskostí a posouvá hranice tradičního vizuálního vyprávění.",
-    "image": { "src": "assets/members/oxoo/profile_pic.jpg", "width": 220, "height": 220, "alt": "" },
+    "image": { "src": "https://smolikja.team/assets/sklad-digital/members/oxoo/profile_pic.jpg", "width": 220, "height": 220, "alt": "" },
     "links": [
       { "label": "oxoo.digital", "href": "https://oxoo.digital/" },
       { "label": "Instagram", "href": "https://www.instagram.com/oxooxooxoxoxxo" }
     ],
     "ariaLabel": "Showcase Lukáše Dřevjaného",
     "media": [
-      { "type": "image", "src": "assets/members/oxoo/showcase/oxoo_terraform.jpg", "alt": "" },
-      { "type": "image", "src": "assets/members/oxoo/showcase/oxoo_fragment.jpg", "alt": "" },
-      { "type": "image", "src": "assets/members/oxoo/showcase/oxoo_nexus.jpg", "alt": "" }
+      { "type": "image", "src": "https://smolikja.team/assets/sklad-digital/members/oxoo/showcase/oxoo_terraform.jpg", "alt": "" },
+      { "type": "image", "src": "https://smolikja.team/assets/sklad-digital/members/oxoo/showcase/oxoo_fragment.jpg", "alt": "" },
+      { "type": "image", "src": "https://smolikja.team/assets/sklad-digital/members/oxoo/showcase/oxoo_nexus.jpg", "alt": "" }
     ]
   },
   {
@@ -23,7 +23,7 @@
     "nickname": "DONE",
     "role": "kodér a herní vývojář. Motion & Sound designer",
     "bio": "Prezentuje projekt <mark class=\"brand-highlight\">Plantáž</mark> – interaktivní hra o rostlinách v nehostinném prostředí. Fúze Tamagochi a Pokémon v MMORPG světě (GTA, WoW). Projektem upozorňuje na exponenciální vývoj technologií, změnu klimatického prostředí, absenci socializace a starání se. Jeho tvorba klíčí z aplikování nových technologií, s kterými digitální svět prorůstá do reálného. Využívá rozkvět Virtuální Reality (<mark class=\"brand-highlight\">VR</mark>), která plně vtáhne do virtuálního prostředí skrze Meta Quest brýle, a Rozšířené Reality (<mark class=\"brand-highlight\">AR</mark>) - která pomocí kamery uživatele přidá digitální prvky do obrazu zaznamenající okolí. <br><mark class=\"brand-highlight\">Motion design</mark> - animace je pro něj nosným prostředkem vizuální komunikace k upoutání pozornosti. <mark class=\"brand-highlight\"></mark>Zvukem</mark> vyvolává emocionální ztotožnění se s obrazem.",
-    "image": { "src": "assets/members/done/profile_pic.jpg", "width": 220, "height": 220, "alt": "" },
+    "image": { "src": "https://smolikja.team/assets/sklad-digital/members/done/profile_pic.jpg", "width": 220, "height": 220, "alt": "" },
     "links": [
       { "label": "Plantáž hra", "href": "https://danielrandus.art/#home/plantaz" },
       { "label": "Motion Design Portfolio", "href": "https://danielrandus.art/" }
@@ -32,16 +32,16 @@
     "media": [
       {
         "type": "video",
-        "src": "assets/members/done/showcase/showreel.mp4",
-        "poster": "assets/members/done/showcase_cover/Motion Design Showreel - DONE Daniel Randus.jpg",
+        "src": "https://smolikja.team/assets/sklad-digital/members/done/showcase/showreel.mp4",
+        "poster": "https://smolikja.team/assets/sklad-digital/members/done/showcase_cover/Motion Design Showreel - DONE Daniel Randus.jpg",
         "autoplay": true
       },
       {
         "type": "video",
-        "src": "assets/members/done/showcase/Plantaz VR Tracking.mp4",
-        "poster": "assets/members/done/showcase_cover/Plantaz VR Tracking.jpg"
+        "src": "https://smolikja.team/assets/sklad-digital/members/done/showcase/Plantaz VR Tracking.mp4",
+        "poster": "https://smolikja.team/assets/sklad-digital/members/done/showcase_cover/Plantaz VR Tracking.jpg"
       },
-      { "type": "image", "src": "assets/members/done/showcase/plantaz_card.png", "alt": "" }
+      { "type": "image", "src": "https://smolikja.team/assets/sklad-digital/members/done/showcase/plantaz_card.png", "alt": "" }
     ]
   },
   {
@@ -50,19 +50,19 @@
     "nickname": "AMT",
     "role": "3d generalist, Real artist",
     "bio": "Umělec studující AVU v ateliéru Intermedia. Využívá vizuální softwary. Modeluje v 3D, VR, AI. Vystavuje pod <a href=\"https://www.instagram.com/stresservice/\" target=\"_blank\" rel=\"noreferrer\">@streservice</a>",
-    "image": { "src": "assets/members/nikita/profile_pic.jpg", "width": 220, "height": 220, "alt": "" },
+    "image": { "src": "https://smolikja.team/assets/sklad-digital/members/nikita/profile_pic.jpg", "width": 220, "height": 220, "alt": "" },
     "links": [{ "label": "Instagram", "href": "https://www.instagram.com/amt________________/" }],
     "ariaLabel": "Showcase Nikity Kutimského",
     "media": [
       {
         "type": "video",
-        "src": "assets/members/nikita/showcase/nikita-strom.mp4",
-        "poster": "assets/members/nikita/showcase_cover/nikita-strom.jpg",
+        "src": "https://smolikja.team/assets/sklad-digital/members/nikita/showcase/nikita-strom.mp4",
+        "poster": "https://smolikja.team/assets/sklad-digital/members/nikita/showcase_cover/nikita-strom.jpg",
         "className": "object-contain"
       },
-      { "type": "image", "src": "assets/members/nikita/showcase/nikita2.jpg", "alt": "", "className": "object-contain" },
-      { "type": "image", "src": "assets/members/nikita/showcase/nikita4.jpg", "alt": "" },
-      { "type": "image", "src": "assets/members/nikita/showcase/nikita1.jpg", "alt": "" }
+      { "type": "image", "src": "https://smolikja.team/assets/sklad-digital/members/nikita/showcase/nikita2.jpg", "alt": "", "className": "object-contain" },
+      { "type": "image", "src": "https://smolikja.team/assets/sklad-digital/members/nikita/showcase/nikita4.jpg", "alt": "" },
+      { "type": "image", "src": "https://smolikja.team/assets/sklad-digital/members/nikita/showcase/nikita1.jpg", "alt": "" }
     ]
   },
   {
@@ -71,62 +71,62 @@
     "nickname": "SLEJDY",
     "role": "3D digital artist",
     "bio": "",
-    "image": { "src": "assets/members/slejdy/slejdy_pic.jpg", "width": 220, "height": 220, "alt": "" },
+    "image": { "src": "https://smolikja.team/assets/sklad-digital/members/slejdy/slejdy_pic.jpg", "width": 220, "height": 220, "alt": "" },
     "links": [{ "label": "Instagram", "href": "https://www.instagram.com/jan.sladecko/" }],
     "ariaLabel": "Showcase Jana SLádečka",
     "media": [
       {
         "type": "video",
-        "src": "assets/members/slejdy/showcase/slejdy_2_BreathingForest_Cycle_21_04_FIN.mp4",
-        "poster": "assets/members/slejdy/showcase_cover/slejdy_2_BreathingForest_Cycle_21_04_FIN.jpg",
+        "src": "https://smolikja.team/assets/sklad-digital/members/slejdy/showcase/slejdy_2_BreathingForest_Cycle_21_04_FIN.mp4",
+        "poster": "https://smolikja.team/assets/sklad-digital/members/slejdy/showcase_cover/slejdy_2_BreathingForest_Cycle_21_04_FIN.jpg",
         "autoplay": true
       },
       {
         "type": "video",
-        "src": "assets/members/slejdy/showcase/slejdy_6_Launching Robot _ Breakdown (After Effects and Cinema 4D) 99frames_h264.mp4",
-        "poster": "assets/members/slejdy/showcase_cover/slejdy_6_Launching Robot _ Breakdown (After Effects and Cinema 4D) 99frames_h264.jpg",
+        "src": "https://smolikja.team/assets/sklad-digital/members/slejdy/showcase/slejdy_6_Launching Robot _ Breakdown (After Effects and Cinema 4D) 99frames_h264.mp4",
+        "poster": "https://smolikja.team/assets/sklad-digital/members/slejdy/showcase_cover/slejdy_6_Launching Robot _ Breakdown (After Effects and Cinema 4D) 99frames_h264.jpg",
         "autoplay": true
       },
       {
         "type": "video",
-        "src": "assets/members/slejdy/showcase/slejdy_1_Awakening_03.mp4",
-        "poster": "assets/members/slejdy/showcase_cover/slejdy_1_Awakening_03.jpg",
+        "src": "https://smolikja.team/assets/sklad-digital/members/slejdy/showcase/slejdy_1_Awakening_03.mp4",
+        "poster": "https://smolikja.team/assets/sklad-digital/members/slejdy/showcase_cover/slejdy_1_Awakening_03.jpg",
         "autoplay": true
       },
       {
         "type": "video",
-        "src": "assets/members/slejdy/showcase/slejdy_3_IceCreamChase_23signed.mp4",
-        "poster": "assets/members/slejdy/showcase_cover/slejdy_3_IceCreamChase_23signed.jpg",
+        "src": "https://smolikja.team/assets/sklad-digital/members/slejdy/showcase/slejdy_3_IceCreamChase_23signed.mp4",
+        "poster": "https://smolikja.team/assets/sklad-digital/members/slejdy/showcase_cover/slejdy_3_IceCreamChase_23signed.jpg",
         "autoplay": true
       },
       {
         "type": "video",
-        "src": "assets/members/slejdy/showcase/slejdy_4_IMAX.mp4",
-        "poster": "assets/members/slejdy/showcase_cover/slejdy_4_IMAX.jpg",
+        "src": "https://smolikja.team/assets/sklad-digital/members/slejdy/showcase/slejdy_4_IMAX.mp4",
+        "poster": "https://smolikja.team/assets/sklad-digital/members/slejdy/showcase_cover/slejdy_4_IMAX.jpg",
         "autoplay": true
       },
       {
         "type": "video",
-        "src": "assets/members/slejdy/showcase/slejdy_5_JBalvin_MakingOf.mp4",
-        "poster": "assets/members/slejdy/showcase_cover/slejdy_5_JBalvin_MakingOf.jpg",
+        "src": "https://smolikja.team/assets/sklad-digital/members/slejdy/showcase/slejdy_5_JBalvin_MakingOf.mp4",
+        "poster": "https://smolikja.team/assets/sklad-digital/members/slejdy/showcase_cover/slejdy_5_JBalvin_MakingOf.jpg",
         "autoplay": true
       },
       {
         "type": "video",
-        "src": "assets/members/slejdy/showcase/slejdy_7_PantheonElastic.mp4",
-        "poster": "assets/members/slejdy/showcase_cover/slejdy_7_PantheonElastic.jpg",
+        "src": "https://smolikja.team/assets/sklad-digital/members/slejdy/showcase/slejdy_7_PantheonElastic.mp4",
+        "poster": "https://smolikja.team/assets/sklad-digital/members/slejdy/showcase_cover/slejdy_7_PantheonElastic.jpg",
         "autoplay": true
       },
       {
         "type": "video",
-        "src": "assets/members/slejdy/showcase/slejdy_8_SillyCubes_01.mp4",
-        "poster": "assets/members/slejdy/showcase_cover/slejdy_8_SillyCubes_01.jpg",
+        "src": "https://smolikja.team/assets/sklad-digital/members/slejdy/showcase/slejdy_8_SillyCubes_01.mp4",
+        "poster": "https://smolikja.team/assets/sklad-digital/members/slejdy/showcase_cover/slejdy_8_SillyCubes_01.jpg",
         "autoplay": true
       },
       {
         "type": "video",
-        "src": "assets/members/slejdy/showcase/slejdy_9_SS_RocketLaunch_23_HOR.mp4",
-        "poster": "assets/members/slejdy/showcase_cover/slejdy_9_SS_RocketLaunch_23_HOR.jpg",
+        "src": "https://smolikja.team/assets/sklad-digital/members/slejdy/showcase/slejdy_9_SS_RocketLaunch_23_HOR.mp4",
+        "poster": "https://smolikja.team/assets/sklad-digital/members/slejdy/showcase_cover/slejdy_9_SS_RocketLaunch_23_HOR.jpg",
         "autoplay": true
       }
     ]
@@ -137,50 +137,50 @@
     "nickname": "MELOON",
     "role": "Junior digital artist",
     "bio": "Využívá prvky 3d a motion grafiky. Inspirován prací studii ManVsMachines, Signal Creative, Aixsponza. Blender, After Effects, Photoshop, Davinci Resolve, Houdini, Resolume Arena, Veo 3, Kling.ai",
-    "image": { "src": "assets/members/meloon/profile_pic.jpg", "width": 220, "height": 220, "alt": "" },
+    "image": { "src": "https://smolikja.team/assets/sklad-digital/members/meloon/profile_pic.jpg", "width": 220, "height": 220, "alt": "" },
     "links": [{ "label": "Instagram", "href": "https://www.instagram.com/meloon.m/" }],
     "ariaLabel": "Showcase Matěje Melouna",
     "media": [
       {
         "type": "video",
-        "src": "assets/members/meloon/showcase/Meloon_presents_2.mp4",
-        "poster": "assets/members/meloon/showcase_cover/Meloon_presents_2.jpg",
+        "src": "https://smolikja.team/assets/sklad-digital/members/meloon/showcase/Meloon_presents_2.mp4",
+        "poster": "https://smolikja.team/assets/sklad-digital/members/meloon/showcase_cover/Meloon_presents_2.jpg",
         "autoplay": true
       },
       {
         "type": "video",
-        "src": "assets/members/meloon/showcase/Meloon_presents_1.mp4",
-        "poster": "assets/members/meloon/showcase_cover/Meloon_presents_1.jpg"
+        "src": "https://smolikja.team/assets/sklad-digital/members/meloon/showcase/Meloon_presents_1.mp4",
+        "poster": "https://smolikja.team/assets/sklad-digital/members/meloon/showcase_cover/Meloon_presents_1.jpg"
       },
       {
         "type": "video",
-        "src": "assets/members/meloon/showcase/Meloon_presents_5.mp4",
-        "poster": "assets/members/meloon/showcase_cover/Meloon_presents_5.jpg"
+        "src": "https://smolikja.team/assets/sklad-digital/members/meloon/showcase/Meloon_presents_5.mp4",
+        "poster": "https://smolikja.team/assets/sklad-digital/members/meloon/showcase_cover/Meloon_presents_5.jpg"
       },
       {
         "type": "video",
-        "src": "assets/members/meloon/showcase/Meloon_presents_7.mp4",
-        "poster": "assets/members/meloon/showcase_cover/Meloon_presents_7.jpg"
+        "src": "https://smolikja.team/assets/sklad-digital/members/meloon/showcase/Meloon_presents_7.mp4",
+        "poster": "https://smolikja.team/assets/sklad-digital/members/meloon/showcase_cover/Meloon_presents_7.jpg"
       },
       {
         "type": "video",
-        "src": "assets/members/meloon/showcase/Meloon_presents_8.mp4",
-        "poster": "assets/members/meloon/showcase_cover/Meloon_presents_8.jpg"
+        "src": "https://smolikja.team/assets/sklad-digital/members/meloon/showcase/Meloon_presents_8.mp4",
+        "poster": "https://smolikja.team/assets/sklad-digital/members/meloon/showcase_cover/Meloon_presents_8.jpg"
       },
       {
         "type": "video",
-        "src": "assets/members/meloon/showcase/Meloon_presents_4.mp4",
-        "poster": "assets/members/meloon/showcase_cover/Meloon_presents_4.jpg"
+        "src": "https://smolikja.team/assets/sklad-digital/members/meloon/showcase/Meloon_presents_4.mp4",
+        "poster": "https://smolikja.team/assets/sklad-digital/members/meloon/showcase_cover/Meloon_presents_4.jpg"
       },
       {
         "type": "video",
-        "src": "assets/members/meloon/showcase/Meloon_presents_6.mp4",
-        "poster": "assets/members/meloon/showcase_cover/Meloon_presents_6.jpg"
+        "src": "https://smolikja.team/assets/sklad-digital/members/meloon/showcase/Meloon_presents_6.mp4",
+        "poster": "https://smolikja.team/assets/sklad-digital/members/meloon/showcase_cover/Meloon_presents_6.jpg"
       },
       {
         "type": "video",
-        "src": "assets/members/meloon/showcase/Meloon_presents_3.mp4",
-        "poster": "assets/members/meloon/showcase_cover/Meloon_presents_3.jpg"
+        "src": "https://smolikja.team/assets/sklad-digital/members/meloon/showcase/Meloon_presents_3.mp4",
+        "poster": "https://smolikja.team/assets/sklad-digital/members/meloon/showcase_cover/Meloon_presents_3.jpg"
       }
     ]
   },
@@ -190,37 +190,37 @@
     "nickname": "avo0xid",
     "role": "3D character animator",
     "bio": "",
-    "image": { "src": "assets/members/dari/dari.jpg", "width": 220, "height": 220, "alt": "" },
+    "image": { "src": "https://smolikja.team/assets/sklad-digital/members/dari/dari.jpg", "width": 220, "height": 220, "alt": "" },
     "links": [{ "label": "Instagram", "href": "https://www.instagram.com/avo0xid/" }],
     "ariaLabel": "Showcase Dari Oxid",
     "media": [
       {
         "type": "video",
-        "src": "assets/members/dari/showcase/Dari_presents_2.mp4",
-        "poster": "assets/members/dari/showcase_cover/Dari_presents_2.jpg",
+        "src": "https://smolikja.team/assets/sklad-digital/members/dari/showcase/Dari_presents_2.mp4",
+        "poster": "https://smolikja.team/assets/sklad-digital/members/dari/showcase_cover/Dari_presents_2.jpg",
         "autoplay": true
       },
       {
         "type": "video",
-        "src": "assets/members/dari/showcase/Dari_presents_3.mp4",
-        "poster": "assets/members/dari/showcase_cover/Dari_presents_3.jpg",
+        "src": "https://smolikja.team/assets/sklad-digital/members/dari/showcase/Dari_presents_3.mp4",
+        "poster": "https://smolikja.team/assets/sklad-digital/members/dari/showcase_cover/Dari_presents_3.jpg",
         "autoplay": true
       },
       {
         "type": "video",
-        "src": "assets/members/dari/showcase/Dari_presents_1.mp4",
-        "poster": "assets/members/dari/showcase_cover/Dari_presents_1.jpg",
+        "src": "https://smolikja.team/assets/sklad-digital/members/dari/showcase/Dari_presents_1.mp4",
+        "poster": "https://smolikja.team/assets/sklad-digital/members/dari/showcase_cover/Dari_presents_1.jpg",
         "autoplay": true
       },
       {
         "type": "video",
-        "src": "assets/members/dari/showcase/Dari_presents_4.mp4",
-        "poster": "assets/members/dari/showcase_cover/Dari_presents_4.jpg",
+        "src": "https://smolikja.team/assets/sklad-digital/members/dari/showcase/Dari_presents_4.mp4",
+        "poster": "https://smolikja.team/assets/sklad-digital/members/dari/showcase_cover/Dari_presents_4.jpg",
         "autoplay": true
       },
       {
         "type": "image",
-        "src": "assets/members/dari/showcase/dari_memory_of_the_stone_pic.jpg",
+        "src": "https://smolikja.team/assets/sklad-digital/members/dari/showcase/dari_memory_of_the_stone_pic.jpg",
         "alt": "Dari Memory of the Stone Pic",
         "className": "object-contain"
       }
@@ -232,18 +232,18 @@
     "nickname": "smolikja",
     "role": "Tech lead & Product",
     "bio": "Jakub je vývojář mobilních aplikací a vytvořil dvě mobilní aplikace pro ovládání fyzického světa – jednu pro chytré domácnosti a druhou pro chytré stáje. Nyní pracuje na vývoji komunitní platformy pro sběr dat o studánkách. Ve volném čase se zaměřuje na vývoj pracovních postupů s AI agenty a provozuje e-shop <a href=\"https://www.instagram.com/stresservice/\" target=\"_blank\" rel=\"noreferrer\">notysky.cz.</a>",
-    "image": { "src": "assets/members/jakub/profile_pic_v2.jpg", "width": 220, "height": 220, "alt": "" },
+    "image": { "src": "https://smolikja.team/assets/sklad-digital/members/jakub/profile_pic_v2.jpg", "width": 220, "height": 220, "alt": "" },
     "links": [
       { "label": "smolikja.team", "href": "https://smolikja.team/" },
       { "label": "GitHub", "href": "https://github.com/smolikja" }
     ],
     "ariaLabel": "Showcase Jakuba Smolíka",
     "media": [
-      { "type": "image", "src": "assets/members/jakub/showcase/studanky.png", "alt": "" },
-      { "type": "image", "src": "assets/members/jakub/showcase/staje.png", "alt": "" },
-      { "type": "image", "src": "assets/members/jakub/showcase/domov.png", "alt": "" },
-      { "type": "image", "src": "assets/members/jakub/showcase/servers.png", "alt": "" },
-      { "type": "image", "src": "assets/members/jakub/showcase/notysky.jpg", "alt": "" }
+      { "type": "image", "src": "https://smolikja.team/assets/sklad-digital/members/jakub/showcase/studanky.png", "alt": "" },
+      { "type": "image", "src": "https://smolikja.team/assets/sklad-digital/members/jakub/showcase/staje.png", "alt": "" },
+      { "type": "image", "src": "https://smolikja.team/assets/sklad-digital/members/jakub/showcase/domov.png", "alt": "" },
+      { "type": "image", "src": "https://smolikja.team/assets/sklad-digital/members/jakub/showcase/servers.png", "alt": "" },
+      { "type": "image", "src": "https://smolikja.team/assets/sklad-digital/members/jakub/showcase/notysky.jpg", "alt": "" }
     ]
   },
   {
@@ -252,7 +252,7 @@
     "nickname": "",
     "role": "Architekt, lumberjack, dog owner",
     "bio": "",
-    "image": { "src": "assets/members/dan/dan_profile_pic.jpg", "width": 220, "height": 220, "alt": "" },
+    "image": { "src": "https://smolikja.team/assets/sklad-digital/members/dan/dan_profile_pic.jpg", "width": 220, "height": 220, "alt": "" },
     "links": [{ "label": "Instagram", "href": "https://www.instagram.com/danholas/" }],
     "ariaLabel": "",
     "media": []
