@@ -1,0 +1,4 @@
+.object-contain{
+    object-fit: contain !important;
+    background: black;
+}

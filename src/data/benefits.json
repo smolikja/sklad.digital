@@ -1,0 +1,27 @@
+[
+  {
+    "title": "Komunita",
+    "description": "Otevřený kolektiv lidí, kteří sdílí zakázky, feedback, repozitáře i experimenty.",
+    "icon": "assets/icons/Komunita.png"
+  },
+  {
+    "title": "Zázemí",
+    "description": "Pracovní stůl, rostliny, klid pro fokus i místo na společné dev & motion sessions.",
+    "icon": "assets/icons/Zazemi.png"
+  },
+  {
+    "title": "Demo",
+    "description": "První tři dny máš zdarma, potom můžeš pokračovat nezávazným demo měsícem a zjistit, jestli ti členství sedí.",
+    "icon": "assets/icons/Demo.png"
+  },
+  {
+    "title": "Flow",
+    "description": "Workflow s AI agenty, realtime vizualizace, audio-vizuální instalace i prototypování nástrojů.",
+    "icon": "assets/icons/Flow.png"
+  },
+  {
+    "title": "Smíchov",
+    "description": "Arbesovo náměstí je plné kaváren, restaurací i obchodů potřebných pro běžný denní provoz. Plus Anděl za rohem.",
+    "icon": "assets/icons/Lokace.png"
+  }
+]
