@@ -230,6 +230,25 @@ const openLightbox = (media, caption) => {
   }
 };
 
+const intersectionSupported = 'IntersectionObserver' in window;
+const videoAutoplayObserver = intersectionSupported
+  ? new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target;
+          if (entry.isIntersecting) {
+            video.play().catch(() => {
+              /* ignore autoplay errors */
+            });
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.35 },
+    )
+  : null;
+
 const mediaSlides = document.querySelectorAll('.member__slide');
 mediaSlides.forEach((slide) => {
   const media = slide.querySelector('video, img');
@@ -239,18 +258,22 @@ mediaSlides.forEach((slide) => {
 
   if (media.tagName === 'VIDEO') {
     media.muted = true;
-    media.autoplay = true;
+    media.autoplay = false;
     media.loop = true;
     media.playsInline = true;
     media.setAttribute('playsinline', '');
     media.setAttribute('webkit-playsinline', '');
+    media.removeAttribute('autoplay');
     media.addEventListener('canplay', () => {
-      media
-        .play()
-        .catch(() => {
-          /* autoplay ignored */
-        });
+      if (!videoAutoplayObserver) {
+        media
+          .play()
+          .catch(() => {
+            /* autoplay ignored */
+          });
+      }
     });
+    videoAutoplayObserver?.observe(media);
   }
 
   const caption = slide.querySelector('figcaption')?.textContent?.trim() ?? '';
