@@ -150,6 +150,8 @@ carouselWrappers.forEach((wrapper) => {
 const lightbox = document.getElementById('media-lightbox');
 const lightboxMedia = lightbox?.querySelector('.lightbox__media');
 const lightboxCaption = lightbox?.querySelector('.lightbox__caption');
+let activeMedia = null;
+let activeMediaWasPaused = true;
 
 const clearLightbox = () => {
   if (!lightbox || !lightboxMedia || !lightboxCaption) {
@@ -168,6 +170,15 @@ const closeLightbox = () => {
   if (!lightbox) {
     return;
   }
+  if (activeMedia && !activeMediaWasPaused) {
+    activeMedia
+      .play()
+      .catch(() => {
+        /* resume is best-effort */
+      });
+  }
+  activeMedia = null;
+  activeMediaWasPaused = true;
   if (typeof lightbox.close === 'function' && lightbox.open) {
     lightbox.close();
   } else {
@@ -181,22 +192,40 @@ const openLightbox = (media, caption) => {
     return;
   }
 
+  activeMedia = media;
+  activeMediaWasPaused = media.paused;
+
   clearLightbox();
   const tag = media.tagName;
   let element;
 
   if (tag === 'VIDEO') {
+    const sourceTime = media.currentTime ?? 0;
     element = document.createElement('video');
     element.src = media.currentSrc || media.getAttribute('src') || '';
     element.controls = true;
     element.preload = 'auto';
     element.setAttribute('playsinline', '');
     element.setAttribute('webkit-playsinline', '');
-    element.muted = true;
+    element.muted = false;
+    element.removeAttribute('muted');
     element.loop = true;
     const poster = media.getAttribute('poster');
     if (poster) {
       element.poster = poster;
+    }
+    const syncTime = () => {
+      if (sourceTime > 0) {
+        try {
+          element.currentTime = Math.min(sourceTime, element.duration || sourceTime);
+        } catch {
+          /* ignore invalid seek */
+        }
+      }
+    };
+    element.addEventListener('loadedmetadata', syncTime, { once: true });
+    if (element.readyState >= 1) {
+      syncTime();
     }
   } else {
     element = document.createElement('img');
@@ -281,7 +310,10 @@ mediaSlides.forEach((slide) => {
   media.setAttribute('role', 'button');
   media.setAttribute('aria-label', caption ? `Otevřít detail: ${caption}` : 'Otevřít detail ukázky');
 
-  media.addEventListener('click', () => openLightbox(media, caption));
+  media.addEventListener('click', (event) => {
+    event.preventDefault();
+    openLightbox(media, caption);
+  });
 
   media.addEventListener('keydown', (event) => {
     if (event.key === 'Enter' || event.key === ' ') {
