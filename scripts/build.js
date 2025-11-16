@@ -67,10 +67,6 @@ const renderMember = (member) => {
 ${member.media.map((item) => renderMediaItem(item)).join('\n')}
                 </div>
               </div>
-              <div class="member__controls">
-                <button class="member__control" type="button" data-direction="prev" aria-label="Předchozí ukázka">‹</button>
-                <button class="member__control" type="button" data-direction="next" aria-label="Další ukázka">›</button>
-              </div>
             </div>`
       : '';
 
