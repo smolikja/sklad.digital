@@ -483,8 +483,6 @@ h3 {
   overflow-x: auto;
   padding: 0.5rem 0.5rem 0.75rem;
   margin: 0 -0.5rem;
-  scroll-snap-type: x mandatory;
-  scroll-padding-inline: clamp(0.5rem, 2vw, 1.5rem);
   scrollbar-width: thin;
   scrollbar-color: rgba(124, 255, 223, 0.6) rgba(255, 255, 255, 0.08);
   -webkit-overflow-scrolling: touch;
@@ -508,8 +506,6 @@ h3 {
 .member__slide {
   flex: 0 0 82%;
   min-width: 0;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -580,7 +576,6 @@ h3 {
 .member__showcase.is-single .member__controls {
   display: none;
 }
-
 
 
 .section--benefits {
@@ -948,21 +943,6 @@ h3 {
 
   .footer__grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 768px) {
-  html,
-  body {
-    scroll-snap-type: y mandatory;
-  }
-
-  .hero,
-  main > *,
-  .section,
-  .footer {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
   }
 }
 
