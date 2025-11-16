@@ -152,6 +152,7 @@ const lightboxMedia = lightbox?.querySelector('.lightbox__media');
 const lightboxCaption = lightbox?.querySelector('.lightbox__caption');
 let activeMedia = null;
 let activeMediaWasPaused = true;
+let activeMediaIsVideo = false;
 
 const clearLightbox = () => {
   if (!lightbox || !lightboxMedia || !lightboxCaption) {
@@ -170,7 +171,7 @@ const closeLightbox = () => {
   if (!lightbox) {
     return;
   }
-  if (activeMedia && !activeMediaWasPaused) {
+  if (activeMediaIsVideo && activeMedia && typeof activeMedia.play === 'function' && !activeMediaWasPaused) {
     activeMedia
       .play()
       .catch(() => {
@@ -179,6 +180,7 @@ const closeLightbox = () => {
   }
   activeMedia = null;
   activeMediaWasPaused = true;
+  activeMediaIsVideo = false;
   if (typeof lightbox.close === 'function' && lightbox.open) {
     lightbox.close();
   } else {
@@ -194,6 +196,7 @@ const openLightbox = (media, caption) => {
 
   activeMedia = media;
   activeMediaWasPaused = media.paused;
+  activeMediaIsVideo = media.tagName === 'VIDEO';
 
   clearLightbox();
   const tag = media.tagName;
