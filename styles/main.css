@@ -103,13 +103,12 @@ button {
   position: relative;
   z-index: 3;
   display: flex;
-  align-items: center;
   justify-content: space-between;
   gap: 1rem;
 }
 
 .brand img {
-  width: 130px;
+  width: 5rem;
   height: auto;
   border-radius: 0;
 }
@@ -265,6 +264,7 @@ h3 {
 
 .btn--primary {
   background: var(--color-accent);
+  white-space: nowrap;
   color: #060606;
 }
 
@@ -434,6 +434,15 @@ h3 {
   color: var(--color-text-muted);
 }
 
+/* Accent highlight for brand/product mentions */
+.brand-highlight {
+  color: var(--color-accent);
+    background: #0b0b0b;
+    font-weight: 600;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
 .member__links {
   margin: 0.5rem 0 0;
   font-size: 0.9rem;
@@ -509,8 +518,9 @@ h3 {
 .member__slide > img {
   flex: 0 1 auto;
   width: 100%;
+  height: 100%;
   max-height: clamp(260px, 55vh, 520px);
-  object-fit: contain;
+  object-fit: cover;
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-md);
   cursor: zoom-in;
@@ -529,8 +539,7 @@ h3 {
 
 .member__controls {
   display: flex;
-  justify-content: flex-end;
-  gap: 0.75rem;
+  justify-content: space-between;
 }
 
 .member__control {
@@ -597,11 +606,21 @@ h3 {
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: var(--color-accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .benefit-rows dd {
   margin: 0.6rem 0 0;
   color: var(--color-text-muted);
+}
+
+/* Inline icons for benefits */
+.benefit-rows dt .benefit-icon {
+  width: 2rem;
+  height: auto;
+  display: inline-block;
 }
 
 .section--community {
@@ -617,13 +636,25 @@ h3 {
   gap: 1.75rem;
 }
 
+/* Icons in CTA cards */
+.cta-card h3 {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cta-card h3 .cta-icon {
+  width: 2rem;
+  height: auto;
+  display: inline-block;
+}
+
 .cta-card {
   background: var(--color-surface);
   border: 1px solid var(--color-border-soft);
   border-radius: var(--radius-md);
   padding: clamp(2rem, 5vw, 2.6rem);
   display: grid;
-  gap: 0.75rem;
   transition: transform var(--transition), border-color var(--transition);
   backdrop-filter: var(--blur-soft);
   -webkit-backdrop-filter: var(--blur-soft);
@@ -690,7 +721,7 @@ h3 {
   background: rgba(10, 12, 16, 0.75);
   border-radius: 32px;
   border: 1px solid var(--color-border);
-  padding: clamp(2.7rem, 6vw, 4.2rem);
+  padding: 2rem;
   text-align: center;
   display: grid;
   gap: 1.5rem;
@@ -774,9 +805,7 @@ h3 {
 }
 
 .lightbox__close-wrapper {
-  display: flex;
-  justify-content: flex-end;
-  padding: 1.25rem 1.5rem 0 0;
+  place-self: center;
 }
 
 .lightbox__close {
@@ -802,7 +831,6 @@ h3 {
 }
 
 .lightbox__content {
-  padding: 0 2.5rem 2.5rem;
   display: grid;
   gap: 1.25rem;
 }
@@ -860,6 +888,10 @@ h3 {
     font-size: 0.92rem;
   }
 
+  .hero {
+    padding: 3.5rem clamp(1.5rem, 4vw, 4rem) clamp(5rem, 8vw, 7rem);
+  }
+
   .hero__content {
     margin-top: clamp(7rem, 10vw, 8.5rem);
     gap: 2rem;
@@ -880,7 +912,6 @@ h3 {
 
   .member__header {
     grid-template-columns: auto 1fr;
-    align-items: center;
     gap: clamp(1.75rem, 4vw, 2.5rem);
   }
 
@@ -969,4 +1000,9 @@ h3 {
   body {
     scroll-snap-type: none;
   }
+}
+
+.object-contain{
+    object-fit: contain !important;
+    background: black;
 }
