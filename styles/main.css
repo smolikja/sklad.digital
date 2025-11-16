@@ -483,16 +483,24 @@ h3 {
 }
 
 .member__carousel {
+  --carousel-edge-space: clamp(1.25rem, 4vw, 1.75rem);
   display: flex;
   gap: clamp(1rem, 3vw, 1.5rem);
   overflow-x: auto;
-  padding: 0.5rem 0.5rem 0.75rem;
+  padding: 0.5rem 0.5rem 0.75rem 0.5rem;
   margin: 0 -0.5rem;
   position: relative;
   scrollbar-width: thin;
   scrollbar-color: rgba(124, 255, 223, 0.6) rgba(255, 255, 255, 0.08);
   -webkit-overflow-scrolling: touch;
   align-items: stretch;
+}
+
+.member__carousel::before,
+.member__carousel::after {
+  content: '';
+  flex: 0 0 var(--carousel-edge-space);
+  pointer-events: none;
 }
 
 @supports (mask-image: linear-gradient(transparent, black)) or (-webkit-mask-image: linear-gradient(transparent, black)) {
@@ -635,7 +643,7 @@ h3 {
 
   .member__carousel {
     margin: 0 -1.25rem;
-    padding-inline: 0;
+    --carousel-edge-space: 0.75rem;
   }
 
   .member__carousel-frame::before {
