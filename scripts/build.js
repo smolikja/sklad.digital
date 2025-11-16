@@ -62,8 +62,10 @@ const renderMember = (member) => {
     member.media && member.media.length
       ? `
             <div class="member__showcase" data-member-carousel>
-              <div class="member__carousel" role="group" aria-label="${ariaLabel}">
+              <div class="member__carousel-frame">
+                <div class="member__carousel" role="group" aria-label="${ariaLabel}">
 ${member.media.map((item) => renderMediaItem(item)).join('\n')}
+                </div>
               </div>
               <div class="member__controls">
                 <button class="member__control" type="button" data-direction="prev" aria-label="Předchozí ukázka">‹</button>

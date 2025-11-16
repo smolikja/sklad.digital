@@ -475,6 +475,11 @@ h3 {
 .member__showcase {
   display: grid;
   gap: clamp(1.2rem, 3vw, 1.8rem);
+  position: relative;
+}
+
+.member__carousel-frame {
+  position: relative;
 }
 
 .member__carousel {
@@ -483,6 +488,7 @@ h3 {
   overflow-x: auto;
   padding: 0.5rem 0.5rem 0.75rem;
   margin: 0 -0.5rem;
+  position: relative;
   scrollbar-width: thin;
   scrollbar-color: rgba(124, 255, 223, 0.6) rgba(255, 255, 255, 0.08);
   -webkit-overflow-scrolling: touch;
@@ -574,6 +580,35 @@ h3 {
 }
 
 .member__showcase.is-single .member__controls {
+  display: none;
+}
+
+/* Edge fades for horizontal scroll */
+.member__carousel-frame::before,
+.member__carousel-frame::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: clamp(0.5rem, 2vw, 1rem);
+  width: clamp(2.5rem, 8vw, 3.5rem);
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity var(--transition);
+  z-index: 1;
+}
+
+.member__carousel-frame::before {
+  left: -0.5rem;
+  background: linear-gradient(90deg, rgba(18, 19, 21, 0.95) 0%, rgba(18, 19, 21, 0.65) 45%, rgba(18, 19, 21, 0) 100%);
+}
+
+.member__carousel-frame::after {
+  right: -0.5rem;
+  background: linear-gradient(270deg, rgba(18, 19, 21, 0.95) 0%, rgba(18, 19, 21, 0.65) 45%, rgba(18, 19, 21, 0) 100%);
+}
+
+.member__showcase.is-single .member__carousel-frame::before,
+.member__showcase.is-single .member__carousel-frame::after {
   display: none;
 }
 

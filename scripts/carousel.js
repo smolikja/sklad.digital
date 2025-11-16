@@ -39,6 +39,8 @@ const setupCarousel = (wrapper) => {
     const left = track.scrollLeft;
     prevButton.disabled = left <= 4;
     nextButton.disabled = left >= maxScroll - 4;
+    wrapper.classList.toggle('can-scroll-prev', left > 4);
+    wrapper.classList.toggle('can-scroll-next', left < maxScroll - 4);
   };
 
   const scrollByOffset = (direction) => {
